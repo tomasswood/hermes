@@ -1,0 +1,208 @@
+/* ------------------------------------------------------
+	SIDEBAR
+------------------------------------------------------ */
+
+@media (min-width: 0) {
+  #sidebar {
+	width: $sidebar-tablet;
+	float: none;
+  }
+}
+
+@media (min-width: $screen-sm) {
+  #sidebar {
+	width: $sidebar-desktop;
+  }
+}
+
+@media (min-width: $screen-lg) {
+  #sidebar {
+	width: $sidebar-lg-desktop;
+  }
+}
+
+#sidebar {
+  position: fixed;
+  top: 51px;
+  right: 0;
+  bottom: 0;
+  z-index: 11;
+  float: left;
+  background: $sidebar-bg;
+
+  .sidebar-inner {
+	float: left;
+	height: 100%;
+	width: 100%;
+	padding-left: 10px;
+	overflow-y: auto;
+
+	ul {
+	  list-style-type: none;
+	  padding: 0;
+	  margin: 0;
+
+	  li {
+		display: block;
+		width: 100%;
+		color: #000;
+		margin-right: 25px;
+		position: relative;
+		overflow: hidden;
+		line-height: $sidebar-item-height;
+
+		.heading {
+		  position: relative;
+		  overflow: hidden;
+		  display: block;
+		  z-index: 100;
+
+		  height: $sidebar-item-height;
+		  padding: 0 25px;
+
+		  @include gradient-vertical(#d7d7d7, #c7c7c7, 0%, 100%);
+		  border-bottom: 1px solid $sidebar-menuitem-border;
+
+		  font-size: 16px;
+		  font-weight: bold;
+		  color: $sidebar-header-text;
+		  line-height: $sidebar-item-height;
+		  text-decoration: none;
+
+		  &:hover {
+			cursor: pointer;
+		  }
+		  // .heading:hover
+		}
+		// .sidebar-inner ul li heading
+
+		// Chevron / Toggle
+		.sidebar-toggle {
+		  color: #5e5e5e;
+		}
+
+		a {
+		  padding-left: 15px;
+		  text-decoration: none;
+
+		  &:hover {
+			text-decoration: underline;
+		  }
+		}
+		a.single {
+		  padding-left: 0;
+		}
+		ul {
+		  //display: none;
+		  width: 100%;
+		  height: auto;
+		  background: $sidebar-submenu-bg;
+		  border-top: 3px solid $sidebar-submenu-border-top;
+		  border-bottom: 1px solid $sidebar-submenu-border-bottom;
+
+		  li {
+			width: 100%;
+			padding: 0 5%;
+			line-height: 25px;
+			color: $sidebar-submenu-text;
+
+			span,
+			a {
+			  background: none;
+			  color: $sidebar-submenu-text;
+			}
+			// .sidebar-inner ul li ul li a
+
+		  }
+		  // .sidebar-inner ul li ul li
+		}
+		// .sidebar-inner ul li ul
+
+		input,
+		select,
+		textarea {
+		  height: $sidebar-item-height;
+		  margin: 0;
+		  padding: 5px;
+		  box-shadow: none;
+		  line-height: $sidebar-item-height;
+		}
+		// .sidebar-inner ul li input/select/textarea
+	  }
+	  // .sidebar-inner ul li
+	}
+	// .sidebar-inner ul
+  }
+  // .sidebar-inner
+
+  #sidebar-toggle {
+	top: 0;
+	bottom: 0;
+	left: 0;
+	margin-right: -$sidebar-item-width;
+	position: absolute;
+	z-index: 999;
+	width: $sidebar-item-width;
+	background: $sidebar-toggle-bg;
+	border-left: 1px solid $sidebar-toggle-border;
+	border-right: 1px solid $sidebar-toggle-border;
+
+	&:hover {
+	  cursor: pointer;
+	}
+	// .sidebar-toggle:hover
+  }
+  // .sidebar-toggle
+
+  .heading-toggle {
+	z-index: 999;
+	background: none;
+	position: absolute;
+	right: 25px;
+	border: none;
+	top: 0;
+	color: #838383;
+	cursor: pointer;
+  }
+  // .heading-toggle
+}
+
+// .sidebar
+
+#element-data {
+  li.value {
+	padding: 5% !important;
+	margin: 5px 0 15px 0;
+	border-top: 1px solid #B0CCD4;
+	border-bottom: 1px solid #B0CCD4;
+	background: #D7E8EC;
+
+	label {
+	  display:block;
+	  text-align: center;
+	}
+
+	#element-attr-value {
+	  min-height: 60px;
+	  line-height: normal;
+	  resize: vertical;
+	}
+  }
+
+  li.attribute {
+
+	label {
+	  width: 30%;
+	  float: left;
+	  line-height: 40px;
+	}
+
+	input {
+	  width: 70%;
+	  height: 30px;
+	  line-height: 30px;
+	  float: left;
+	  text-align: center;
+	}
+  }
+}

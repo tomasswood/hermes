@@ -1,0 +1,51 @@
+//
+// Checklist
+// --------------------------------------------------
+
+ul#checklist {
+  width: 100%;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 0 !important;
+
+  li {
+	font-weight: bold;
+	border: 1px solid transparent;
+	padding: 2px 15px;
+	width: 100% !important;
+
+	span {
+	  margin: 0 5px;
+	  color: inherit !important;
+	}
+	//span
+
+	&.incomplete {
+	  background: $state-danger-bg;
+	  border-color: $state-danger-border;
+	  color: $state-danger-text !important;
+
+	  a {
+		color: inherit !important;
+	  }
+	  //a
+	}
+	//.incomplete
+
+	&.complete {
+	  background: $state-success-bg;
+	  border-color: $state-success-border;
+	  color: $state-success-text !important;
+
+	  a {
+		color: inherit !important;
+	  }
+	  //a
+	}
+	//.complete
+  }
+  //li
+}
+
+//ul#checklist

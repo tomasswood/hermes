@@ -1,0 +1,90 @@
+//
+// Wells
+// --------------------------------------------------
+
+// Base class
+.module {
+  margin-bottom: $line-height-computed;
+  background-color: $module-bg;
+  border: 1px solid $module-border;
+  border-radius: $module-border-radius;
+  padding: 0;
+  text-align: center;
+  float: left;
+  width: 100%;
+  color: $module-text;
+
+  font-weight: bold;
+
+  .main {
+	color: #fff;
+	width: 100%;
+	font-size: 44px;
+	border: 2px solid $module-bg;
+	@include border-radius(4px, 4px, 0, 0);
+	background: $gray;
+  }
+
+  &.red > .main {
+	background: $red;
+  }
+  &.blue > .main {
+	background: $blue;
+  }
+  &.green > .main {
+	background: $green;
+  }
+  &.yellow > .main {
+	background: $yellow;
+  }
+
+  .sub {
+	width: 100%;
+	height: 25px;
+	line-height: 25px;
+	border-top: 1px solid $module-border;
+	background: $module-sub-bg;
+	color: $module-sub-text;
+
+	.title {
+	  float: left;
+	  height: 100%;
+	  width: auto;
+	  max-width: 80%;
+	  padding-left: 10px;
+	}
+
+	.buttons {
+	  float: right;
+	  width: 20%;
+	  height: 100%;
+
+	  .btn {
+		line-height: 25px;
+		float: left;
+		width: 50%;
+		height: 100%;
+		padding: 0;
+		margin: 0;
+		border-left: 1px solid $module-border;
+		@include border-radius(0, 0, 0, 0);
+
+		.dropdown-menu {
+		  left: -122px;
+		  a:hover {
+			color: #fff;
+		  }
+		}
+	  }
+
+	  a {
+		color: $module-sub-text;
+	  }
+
+	  .btn:hover,
+	  a:hover {
+		color: $blue;
+	  }
+	}
+  }
+}
