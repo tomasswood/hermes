@@ -819,34 +819,6 @@ code {
 }
 
 /* line 22, ../sass/_code.scss */
-pre {
-  display: block;
-  padding: 9.5px;
-  margin: 0 0 10px;
-  font-size: 13px;
-  line-height: 1.428571429;
-  word-break: break-all;
-  word-wrap: break-word;
-  color: #333333;
-  background-color: whitesmoke;
-  border: 1px solid #cccccc;
-  border-radius: 4px;
-}
-/* line 36, ../sass/_code.scss */
-pre.prettyprint {
-  margin-bottom: 20px;
-}
-/* line 41, ../sass/_code.scss */
-pre code {
-  padding: 0;
-  font-size: inherit;
-  color: inherit;
-  white-space: pre-wrap;
-  background-color: transparent;
-  border: 0;
-}
-
-/* line 52, ../sass/_code.scss */
 .pre-scrollable {
   max-height: 340px;
   overflow-y: scroll;
@@ -8294,14 +8266,16 @@ td.visible-print {
   display: block;
 }
 /* line 22, ../sass/elements/_cell.scss */
-.textbox textarea {
+.textbox pre {
   width: 100%;
   height: 100%;
-  resize: none;
   border: none;
+  background: none;
+  margin: 0;
+  padding: 0;
 }
 
-/* line 30, ../sass/elements/_cell.scss */
+/* line 32, ../sass/elements/_cell.scss */
 .ui-resizable-e {
   position: absolute;
   top: 0;
@@ -8311,7 +8285,7 @@ td.visible-print {
   cursor: e-resize;
 }
 
-/* line 39, ../sass/elements/_cell.scss */
+/* line 41, ../sass/elements/_cell.scss */
 .ui-resizable-s {
   position: absolute;
   bottom: -4px;
@@ -8320,7 +8294,7 @@ td.visible-print {
   cursor: ns-resize;
 }
 
-/* line 47, ../sass/elements/_cell.scss */
+/* line 49, ../sass/elements/_cell.scss */
 .ui-resizable-se {
   position: absolute;
   bottom: -2px;

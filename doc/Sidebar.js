@@ -26,11 +26,11 @@ $(document).ready(function() {
 	});
 
 	$(document.body).on('change', '#element-attr-top' ,function(){
-		SELECTED.css({top: $(this).val()});
+		SELECTED.css({top: $(this).val()+"px"});
 	});
 
 	$(document.body).on('change', '#element-attr-left' ,function(){
-		SELECTED.css({left: $(this).val()});
+		SELECTED.css({left: $(this).val()+"px"});
 	});
 
 });
