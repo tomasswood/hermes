@@ -1,5 +1,5 @@
 <?php
-	function pageHeader($sub = null, $links = array())
+	function pageHeader($links = array())
 	{
 ?>
 	<!DOCTYPE html>
@@ -22,16 +22,12 @@
 		<nav class="navbar navbar-main" role="navigation">
 			<div class="container">
 				<div class="navbar-header">
-					<button type="button" class="navbar-toggle" data-toggle="collapse"
-						data-target=".navbar-ex1-collapse">
-						<span class="sr-only">Toggle navigation</span>
-					</button>
 					<h1>
 						<a class="navbar-brand" id="logo"
 							href="<?php echo Path('root', 'abs') . 'index.php?flindle=true'; ?>">Pegasus</a>
 					</h1>
 				</div>
-				<div class="collapse navbar-collapse navbar-ex1-collapse">
+				<div class="collapse navbar-collapse navbar-ex1-collapse"> <?php //TODO: Remove collapse ?>
 					<ul class="nav navbar-nav">
 						<li>Hello</li>
 					</ul>

@@ -21,7 +21,7 @@ function addElement(element)
 function elementTextbox(id)
 {
 	//var ELEMENT_TEXTBOX = '<div id="ID'+ id +'" class="textbox element" data-type="Textbox">Test</div>';
-	var ELEMENT_TEXTBOX = '<div id="ID'+ id +'" class="textbox element" data-type="Textbox"><textarea></textarea></div>';
+	var ELEMENT_TEXTBOX = '<div id="ID'+ id +'" class="textbox element" data-type="Textbox"><div class="content"></div></div>';
 
 	return ELEMENT_TEXTBOX;
 }
@@ -71,22 +71,6 @@ function initializeDraggable()
 		stop: function( event, ui ){
 			styleDeselect(SELECTED);
 		}
-	});
-
-	// Editor
-	tinymce.init({
-		selector: "textarea",
-		theme: "modern",
-		plugins: [
-			["advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker"],
-			["searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking"],
-			["save table contextmenu directionality emoticons template paste"]
-		],
-		add_unload_trigger: false,
-		schema: "html5",
-		inline: true,
-		toolbar: "undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image     | print preview media",
-		statusbar: true
 	});
 }
 
@@ -151,6 +135,7 @@ $(document).ready(function() {
 	// ==============================================
 	// RIGHT CLICK
 	// ==============================================
+    /*
 		if (document.addEventListener) {
 			document.addEventListener('contextmenu', function(e) {
 				alert("You've tried to open context menu"); //here you draw your own menu
@@ -161,7 +146,7 @@ $(document).ready(function() {
 				alert("You've tried to open context menu");
 				window.event.returnValue = false;
 			});
-		}
+		}*/
 
 	// ==============================================
 	// SELECTION

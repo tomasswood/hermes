@@ -2674,6 +2674,16 @@ input[type="button"].btn-block {
   width: 100%;
 }
 
+/* line 5, ../sass/_header.scss */
+#header {
+  z-index: 999;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 50px;
+  background: #2b7cbe;
+}
+
 /* line 8, ../sass/_page.scss */
 #main {
   width: 100%;
@@ -2699,8 +2709,31 @@ input[type="button"].btn-block {
   background: #fff;
 }
 
-/* line 4, ../sass/_toolbar.scss */
-#toolbar {
+/* line 5, ../sass/_editortoolbar.scss */
+#editor-toolbar {
+  z-index: 999;
+  position: fixed;
+  top: 50px;
+  left: 0;
+  width: 100%;
+  height: 120px;
+  background: #dadada;
+  border-top: 1px solid #999;
+  border-bottom: 1px solid #999;
+}
+/* line 16, ../sass/_editortoolbar.scss */
+#editor-toolbar .tool {
+  display: block;
+  float: left;
+  padding: 5px;
+  background: #ccc;
+  border: 1px solid #999;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* line 4, ../sass/_lefttoolbar.scss */
+#left-toolbar {
   position: fixed;
   width: 100px;
   height: 100%;
@@ -2708,15 +2741,15 @@ input[type="button"].btn-block {
   background: #2B2B2B;
   color: #fff;
 }
-/* line 12, ../sass/_toolbar.scss */
-#toolbar ul.menu {
+/* line 12, ../sass/_lefttoolbar.scss */
+#left-toolbar ul.menu {
   margin: 0;
   padding: 0;
   width: 100%;
   cursor: pointer;
 }
-/* line 18, ../sass/_toolbar.scss */
-#toolbar ul.menu li {
+/* line 18, ../sass/_lefttoolbar.scss */
+#left-toolbar ul.menu li {
   width: 100%;
   padding: 10px 5px;
   text-align: center;

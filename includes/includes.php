@@ -27,7 +27,8 @@
 	// ====================================================================
 	require_once(dirname(__FILE__) . '/../template/header.php');
 	require_once(dirname(__FILE__) . '/../template/footer.php');
-	require_once(dirname(__FILE__) . '/../template/toolbar.php');
+    require_once(dirname(__FILE__) . '/../template/editor-toolbar.php');
+    require_once(dirname(__FILE__) . '/../template/left-toolbar.php');
 	require_once(dirname(__FILE__) . '/../template/sidebar.php');
 	// ====================================================================
 	//  NEW - WILL REPLACE ESSENTIALS / CORE SECTION

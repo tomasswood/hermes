@@ -1,15 +1,15 @@
 <?php
 
-	function pageToolbar($type = null)
+	function leftToolbar($type = null)
 	{
-		buildToolbar();
+		buildLeftToolbar();
 	}
 
-	function buildToolbar()
+	function buildLeftToolbar()
 	{
 		?>
 
-		<div id="toolbar">
+		<div id="left-toolbar">
 			<ul class="menu">
 				<li id="toolbar-btn-generate">Generate</li>
 				<li id="toolbar-btn-element-textbox">Textbox</li>

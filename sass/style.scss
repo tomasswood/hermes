@@ -26,8 +26,10 @@
 @import "forms";
 @import "buttons";
 // Components: common
+@import "header";
 @import "page";
-@import "toolbar";
+@import "editortoolbar";
+@import "lefttoolbar";
 @import "sidebar";
 @import "checklist";
 @import "component-animations";

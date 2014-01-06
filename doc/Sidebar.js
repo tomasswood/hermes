@@ -14,7 +14,7 @@ $(document).ready(function() {
 	// ATTRIBUTE CHANGES
 	// ----------------------------------------------
 	$(document.body).on('change', '#element-attr-value' ,function(){
-		SELECTED.text($(this).val());
+		SELECTED.children('.content').text($(this).val());
 	});
 
 	$(document.body).on('change', '#element-attr-height' ,function(){
@@ -40,7 +40,7 @@ function getElementData(element)
 	var data = {
 		"id": $(element).attr('id'),
 		"type": $(element).data('type'),
-		"value": $(element).text(),
+		"value": $(element).children('.content').text(),
 		"height": $(element).height(),
 		"width": $(element).width(),
 		"offset_top": $(element).position().top,

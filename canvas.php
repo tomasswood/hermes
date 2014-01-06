@@ -2,13 +2,12 @@
 	require_once('includes/includes.php');
 	pageHeader();
 ?>
-
-	<script type="text/javascript" src="<?php echo  Path("js/tinymce", "abs") ?>tinymce.min.js"></script>
 	<script type="text/javascript" src="<?php echo  Path("js", "abs") ?>page.js"></script>
 	<script type="text/javascript" src="<?php echo  Path("doc", "abs") ?>Page.js"></script>
 	<script type="text/javascript" src="<?php echo  Path("doc", "abs") ?>Sidebar.js"></script>
 
-	<?php  pageToolbar() ; ?>
+    <?php  editorToolbar() ; ?>
+    <?php  leftToolbar() ; ?>
 
 	<div id="main">
 		<div id="page-container">
