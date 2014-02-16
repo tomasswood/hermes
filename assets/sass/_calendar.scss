@@ -1,0 +1,528 @@
+/* ------------------------------------------------------
+	IMPORTS
+------------------------------------------------------ */
+$available: #94e47f;
+$unavailable: $gray;
+$booked-out: #d65050;
+$booked-semi: #e4d07f;
+$disabled: $gray;
+$cell-bg: #EBEBEB;
+
+// --------------------------------------------
+// STYLING
+// --------------------------------------------
+.Mon {
+  background: #149c57 !important;
+}
+
+.Tue {
+  background: #cb5628 !important;
+}
+
+.Wed {
+  background: #82529d !important;
+}
+
+.Thu {
+  background: #b6393a !important;
+}
+
+.Fri {
+  background: #378aba !important;
+}
+
+.Sat {
+  background: #c0a020 !important;
+}
+
+.Sun {
+  background: #c04685 !important;
+}
+
+#calendar {
+  border: 1px solid $calendar-default-border;
+  background: $calendar-bg;
+  border-radius: $calendar-border-radius;
+  padding: $calendar-padding;
+
+  table {
+	width: 100%;
+	border-collapse: collapse;
+
+	thead {
+	  tr {
+		th {
+		  width: 13%;
+		  height: 35px;
+		  border-bottom: 1px solid $calendar-default-border;
+		  text-align: center;
+		}
+	  }
+	}
+
+	tbody {
+	  //border-bottom: 1px solid $calendar-default-border;
+	  border-right: 1px solid $calendar-default-border;
+	  tr {
+		height: 30px;
+
+		td.selectable {
+		  background: #fff;
+		  cursor: pointer;
+
+		  &:hover {
+			background: $calendar-hover !important;
+			border-color: $calendar-hover-border;
+		  }
+
+		  &.ui-selecting {
+			background: $calendar-selected;
+			border-color: $calendar-selected-border;
+		  }
+
+		  &.assigned {
+			background: $calendar-assigned;
+			border-color: $calendar-assigned-border;
+		  }
+
+		  &.selected {
+			background: $calendar-selected;
+			border-color: $calendar-selected-border;
+		  }
+		}
+		//end td.selectable
+
+
+		td.unselectable {
+		  background: $calendar-disabled;
+		}
+
+		td.booked-semi {
+		  background: $calendar-booked-semi;
+		}
+
+		td.booked-out {
+		  background: $calendar-booked-out;
+		}
+
+		td.disabled-staff,
+		td.disabled-service {
+		  background: $calendar-disabled;
+		  cursor: auto;
+
+		  &:hover {
+			background: $calendar-disabled !important;
+		  }
+		}
+	  }
+	  // #calendar tody tr
+
+	  td {
+		border-left: 1px solid $calendar-default-border;
+		border-bottom: 1px solid $calendar-default-border;
+	  }
+	  // #calendar tody td
+	}
+	// #calendar tbody
+
+	// Time Header Cells
+	th.time {
+	  width: 9%;
+	  border-bottom: 0;
+	  text-align: center;
+	  span {
+		color: $calendar-color;
+	  }
+
+	}
+  }
+}
+
+#calendar-selectedlist {
+  ul {
+	width: 100%;
+	height: 100px;
+	overflow-y: scroll;
+	margin: 0;
+	padding: 0;
+
+	li {
+	  height: 35px;
+	  line-height: 35px;
+	  width: 46%;
+	  padding: 0 2%;
+	  border-left: 2px solid $calendar-default-border;
+	  float: left;
+	  list-style: none;
+	  font-weight: bold;
+	}
+
+	.day {
+	  border-radius: 4px;
+	  color: #fff;
+	  display: block;
+	  width: 20%;
+	  height: 90%;
+	  margin-right: 5%;
+	  text-align: center;
+	  float: left;
+	}
+
+	.time {
+	  width: 75%;
+	  text-align: left;
+	}
+  }
+}
+
+#calendar-toolbar {
+  ul {
+	width: 100%;
+	height: 100px;
+	overflow: hidden;
+	margin: 0;
+	padding: 0;
+
+	li {
+	  width: 100%;
+	  margin-bottom: 5px;
+	  list-style: none;
+
+	  &:first-child {
+		margin-left: 0;
+	  }
+
+	  .toolbar-item {
+		cursor: pointer;
+		width: 100%;
+		display: block;
+		border-radius: 4px;
+		border: 1px solid $calendar-default-border;
+		background: $calendar-bg;
+		padding: 2px 10px;
+		text-align: center;
+
+		.title {
+		  font-weight: bold;
+		}
+	  }
+	}
+  }
+}
+
+#calendar-stafflist {
+  ul#staff-list {
+	width: 100%;
+	height: 100px;
+	overflow-y: scroll;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+
+	li {
+	  width: 100%;
+	  height: 40px;
+	  overflow: hidden;
+
+	  .no-staff {
+		margin-right: 15px;
+		height: 35px;
+		line-height: 35px;
+		padding: 0 15px;
+
+		span.no-one-assigned {
+		  float: left;
+		  width: 80%;
+		  display: block;
+		  font-weight: bold;
+		}
+
+		.actions {
+		  float: left;
+		  text-align: right;
+		  padding-right: 15px;
+		  width: 20%;
+		}
+	  }
+
+	  .datetime {
+		width: 115px;
+		float: left;
+		line-height: 40px;
+	  }
+
+	  .name {
+		height: 100%;
+		width: 20%;
+		font-weight: bold;
+		float: left;
+		line-height: 40px;
+		text-align: center;
+	  }
+
+	  .choices {
+		width: 30%;
+		float: left;
+	  }
+
+	  .total {
+		margin-left: 5%;
+		width: 23%;
+		float: left;
+
+		span {
+		  //width: 85%;
+		}
+
+		input {
+		  //width: 15%;
+		}
+	  }
+
+	  .actions {
+		height: 100%;
+		width: 5%;
+		float: right;
+		text-align: right;
+		padding-right: 15px;
+		line-height: 40px;
+
+		span {
+		  cursor: pointer;
+		}
+	  }
+	}
+  }
+}
+
+// YET TO BE EDITED
+$cell-dimensions: 70px;
+
+$cell-width: 14%;
+$toolbar-height: 40px;
+#flindle-module {
+  width: 100%;
+  margin: 0 auto;
+  cursor: default;
+  border: 1px solid $calendar-default-border;
+  background: $calendar-bg;
+  border-radius: $calendar-border-radius;
+
+  .toolbar {
+	display: block;
+	width: 100%;
+	height: $toolbar-height;
+	color: #fff;
+	background: #2b7cbe;
+	padding: 8px 5%;
+	border-bottom: 1px solid $calendar-default-border;
+	overflow: hidden;
+
+	.steps {
+	  line-height: 25px;
+
+	  span {
+		max-width: 120px;
+		text-align: center;
+		font-weight: bold;
+
+		&.current {
+		  height: 25px;
+		  background: #fff;
+		  @include border-radius(4px, 4px, 4px, 4px);
+
+		  color: #2b7cbe;
+		  line-height: 25px;
+		}
+
+		&.past {
+		  cursor: pointer;
+		}
+	  }
+	}
+	.filter {
+	  #filter-staff,
+	  #filter-service {
+		height: 25px;
+		padding: 3px 6px;
+		background: #fff;
+		color: #2b7cbe;
+		border-radius: 4px;
+		font-weight: bold;
+		border: none;
+	  }
+	}
+	// .filter
+  }
+  // /.toolbar
+
+  .body {
+	background: #fff;
+	padding: $calendar-padding;
+	overflow: auto;
+
+	.prev-month {
+	  .date {
+
+	  }
+	}
+  }
+
+  #flindle-calendar-tools {
+	width: 100%;
+	overflow: hidden;
+	border-bottom: 1px solid $calendar-default-border;
+
+	.col-sm-2 {
+	  padding: 5px 0;
+	}
+
+	.col-sm-8 {
+	  padding: 10px 0;
+	}
+
+	#month {
+	  font-weight: bold;
+	  font-size: 18px;
+	}
+  }
+
+  $calendar-border: #c9c9c9;
+  #flindle-calendar {
+	border-collapse: collapse;
+	width: 100%;
+	border-top: 1px solid $calendar-border;
+	border-left: 1px solid $calendar-border;
+
+	thead {
+	  padding: 0 25px;
+
+	  @include gradient-vertical(#e4e4e4, #cccccc);
+	  border-bottom: 1px solid darken($calendar-border, 5%);
+	  border-right: 1px solid $calendar-border;
+
+	  font-size: 12px;
+	  font-weight: bold;
+	  color: #4a4a4a;
+	  line-height: 30px;
+	  text-decoration: none;
+
+	  th {
+		padding: 10px 0;
+		width: $cell-width;
+		text-align: center;
+	  }
+	}
+
+	tbody {
+
+	  td {
+		height: $cell-dimensions;
+		width: $cell-width;
+		background: $cell-bg;
+		border-right: 1px solid $calendar-border;
+		border-bottom: 1px solid $calendar-border;
+
+		&.selectable {
+		  cursor: pointer;
+		  background: #fff;
+
+		  &:hover {
+			background: #48a1da;
+			color: #fff;
+		  }
+		}
+
+		&.availability {
+		  text-align: center;
+		  cursor: pointer;
+
+		  .time {
+			font-weight: bold;
+			line-height: 45px;
+		  }
+		}
+
+		&.disabled-staff,
+		&.disabled-service {
+		  background: #dbdbdb;
+		  cursor: default;
+
+		  &:hover {
+			background: #dbdbdb;
+			color: $calendar-color;
+		  }
+		}
+
+		.inner {
+		  display: table;
+		  position: relative;
+		  height: 100%;
+		  width: 100%;
+		}
+
+		.date {
+		  display: table-cell;
+		  vertical-align: middle;
+		  width: 100%;
+		  height: 100%;
+		  text-align: center;
+		  font-weight: bold;
+		}
+
+		&.prev-month {
+		  background: darken($cell-bg , 10%);
+		  .date {
+			color: #A7A7A7;
+		  }
+		}
+	  }
+	  //table tbody td
+	}
+	// table tbody
+  }
+  // #flindle-calendar
+}
+
+#refno {
+  padding: 10px;
+  border-radius: 4px;
+  font-weight: bold;
+
+  h3 {
+	margin: 0;
+	color: #fff;
+	font-weight: 800;
+  }
+}
+#refno.success {
+  background: #89c05a;
+  border: 1px solid #78a368;
+  box-shadow: inset 0px 0px 5px #60a563;
+
+  h3 {
+	text-shadow: 0 1px 3px #1e4b12;
+  }
+
+  .sub {
+	color: #d7ffb2;
+  }
+}
+#refno.pending {
+  background: #FFECA1;
+  border: 1px solid #F3DB7E;
+  box-shadow: inset 0px 0px 5px #F3DB7E;
+
+  h3 {
+	text-shadow: 0 1px 3px #A58729;
+  }
+
+  .sub {
+	color: #C59C54;
+  }
+}
+// #flindle-module
+
+
+
+

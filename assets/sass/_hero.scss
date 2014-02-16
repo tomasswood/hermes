@@ -1,0 +1,60 @@
+//
+// Hero
+// --------------------------------------------------
+
+
+#hero {
+  width: 100%;
+  background: #000;
+  height: 400px;
+  background: url('../images/hero_restaurant.jpg');
+
+  .container {
+	height: inherit;
+  }
+  .inner {
+	margin: 100px 0;
+	height: 200px;
+	width: 100%;
+
+	.primary {
+	  font-size: 48px;
+	  color: #fff;
+	  text-shadow: 0 5px 5px #000;
+	  text-align: center;
+	  font-family: 'Bitter';
+	  font-weight: bold;
+	}
+
+	#btn-learn-more {
+	  background: #60B637;
+	  border: 1px solid #459730;
+	  box-shadow: 0 0 10px #000;
+	  width: 220px;
+	  height: 55px;
+	  margin: 100px auto 0 auto;
+	  cursor: pointer;
+	  border-radius: 8px;
+
+	  h2 {
+		width: 100%;
+		height: 100%;
+		font-size: 24px;
+		text-align: center;
+		font-weight: bold;
+		line-height: 55px;
+		margin: 0;
+
+		a {
+		  display: block;
+		  color: #fff;
+		  text-shadow: 0 1px 1px #000;
+
+		  &:hover {
+			text-decoration: none;
+		  }
+		}
+	  }
+	} // #btn-learn-more
+  } // .inner
+}

@@ -1,0 +1,60 @@
+//
+// Footer
+// --------------------------------------------------
+#main {
+  &.site
+  {
+	#display
+	{
+	  padding-bottom: 230px;
+	}
+  }
+}
+#footer {
+  position: relative;
+  margin-top: -230px;
+  height: 230px;
+  clear: both;
+  width: 100%;
+  background: #2F5B83;
+  border-top: 1px solid #123453;
+  color: #9ECCF6;
+  padding: 15px 25px;
+
+  h4 {
+	font-weight: bold;
+  }
+
+  ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+
+	li {
+	  margin-bottom: 5px;
+
+	  a {
+		color: inherit;
+		text-decoration: none;
+
+		&:hover {
+		  color: lighten(#9ECCF6, 20%);
+		}
+	  }
+	}
+  }
+
+  .social {
+	img {
+	  margin: 5px;
+	}
+  }
+
+  .copyright {
+	margin-top: 10px;
+	padding-top: 10px;
+	border-top: 1px solid #4176A7;
+	text-align: center;
+	font-weight: bold;
+  }
+}

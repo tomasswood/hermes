@@ -1,0 +1,339 @@
+//
+// Utility classes
+// --------------------------------------------------
+
+// Floats
+// -------------------------
+
+.clearfix {
+  @include clearfix;
+}
+
+.pull-right {
+  float: right !important;
+}
+
+.full-right {
+  right: 0 !important;
+}
+
+.pull-left {
+  float: left !important;
+}
+
+.full-left {
+  left: 0 !important;
+}
+
+.center-block {
+  @include center-block();
+}
+
+.no-border {
+  border: none !important;
+}
+
+.blue-box {
+  background-color: #EDF9FF;
+  border: 1px solid #C3E5FF;
+  padding: 20px;
+}
+
+.white-bg {
+  background: #fff;
+}
+
+.edit-input {
+  display: none;
+}
+
+.vertical-middle {
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+}
+
+.no-padding {
+  padding: 0 !important;
+}
+
+// Toggling content
+// -------------------------
+
+.input-success {
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(82, 233, 81, 0.60);
+}
+
+.input-danger {
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(233, 61, 59, 0.60);
+}
+
+.form-inactive {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 999;
+  background: rgba(0,0,0,0.3);
+  border: 1px solid rgba(0,0,0,0.2);
+
+  p {
+	position: absolute;
+	width: 80%;
+	background: #2b7cbe;
+	left: 10%;
+	top: 30%;
+	text-align: center;
+	padding: 20px 10px;
+	font-weight: bold;
+	color: #fff;
+
+	a {
+	  color: #ffc200;
+	}
+  }
+}
+
+.hide {
+  display: none !important;
+}
+
+.show {
+  display: block !important;
+}
+
+.inline {
+  display: inline !important;
+}
+
+.inline-block {
+  display: inline-block !important;
+}
+
+.block {
+  display: block !important;
+}
+
+.invisible {
+  visibility: hidden;
+}
+
+.text-hide {
+  @include text-hide();
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.move {
+  cursor: move;
+}
+
+.width-half {
+  width: 50%;
+}
+
+.background-none {
+  background: none !important;
+}
+
+#myReport {
+  margin: -50px auto;
+}
+a.link-button:hover {
+  text-decoration: none;
+}
+
+// Toggling content
+// -------------------------
+.no-overflow {
+  overflow: hidden;
+}
+
+// For Affix plugin
+// -------------------------
+
+.affix {
+  position: fixed;
+}
+
+// Input span alignment
+// -------------------------
+.input-group {
+  width: 100%;
+}
+
+// Global widths
+// -------------------------
+.fill {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.width-50 {
+  width: 50px;
+}
+
+.width-75 {
+  width: 75px;
+}
+
+.width-100 {
+  width: 100px;
+}
+
+.width-125 {
+  width: 125px;
+}
+
+.width-150 {
+  width: 150px;
+}
+
+.width-175 {
+  width: 175px;
+}
+
+.width-200 {
+  width: 200px;
+}
+
+.width-225 {
+  width: 225px;
+}
+
+.width-250 {
+  width: 250px;
+}
+
+.width-500 {
+  width: 500px;
+}
+
+.min-width-75 {
+  min-width: 75px;
+}
+
+.min-width-100 {
+  min-width: 100px;
+}
+
+.min-width-125 {
+  min-width: 125px;
+}
+
+.min-width-150 {
+  min-width: 150px;
+}
+
+.min-width-175 {
+  min-width: 175px;
+}
+
+.min-width-200 {
+  min-width: 200px;
+}
+
+.min-width-225 {
+  min-width: 225px;
+}
+
+.min-width-250 {
+  min-width: 250px;
+}
+
+.margin-right-5 {
+  margin-right: 5px;
+}
+
+.margin-right-10 {
+  margin-right: 10px;
+}
+
+.margin-right-20 {
+   margin-right: 20px;
+}
+
+.margin-left-5 {
+  margin-left: 5px;
+}
+
+.margin-left-10 {
+  margin-left: 10px;
+}
+
+.margin-left-20 {
+  margin-left: 20px;
+}
+
+// Spin Animation
+// -------------------------
+.animate-spin {
+  -webkit-animation-name: spin;
+  -webkit-animation-duration: 1000ms;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+  -moz-animation-name: spin;
+  -moz-animation-duration: 1000ms;
+  -moz-animation-iteration-count: infinite;
+  -moz-animation-timing-function: linear;
+  -ms-animation-name: spin;
+  -ms-animation-duration: 1000ms;
+  -ms-animation-iteration-count: infinite;
+  -ms-animation-timing-function: linear;
+
+  animation-name: spin;
+  animation-duration: 1000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+@-ms-keyframes spin {
+  from {
+	-ms-transform: rotate(0deg);
+  }
+  to {
+	-ms-transform: rotate(360deg);
+  }
+}
+
+@-moz-keyframes spin {
+  from {
+	-moz-transform: rotate(0deg);
+  }
+  to {
+	-moz-transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes spin {
+  from {
+	-webkit-transform: rotate(0deg);
+  }
+  to {
+	-webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  from {
+	transform: rotate(0deg);
+  }
+  to {
+	transform: rotate(360deg);
+  }
+}
+
+// Progress / Load Bar
+// -------------------------------
+.ui-progressbar-value {
+  display: block;
+  width: 100%;
+  height: 10px;
+}
+
+.ui-progressbar-value {
+  display: block;
+  background: $gray;
+  height: 3px;
+}

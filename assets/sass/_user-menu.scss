@@ -1,0 +1,61 @@
+//
+// User Menu
+// --------------------------------------------------
+
+#user-menu {
+  display: none;
+  width: 300px;
+  height: auto;
+  position: absolute;
+  top: $navbar-height;
+  background-color: $almost-white;
+  border-left: 5px solid #2B7CBE;
+  border-bottom: 5px solid #2B7CBE;
+  border-right: 5px solid #2B7CBE;
+  outline: 1px solid #2469a1;
+
+  .left {
+	float: left;
+	height: auto;
+	margin: 10px;
+	width: 30%;
+
+	div.avatar {
+	  margin-left: 10px;
+	  width: 50%;
+	  width: 100px;
+	  height: 100px;
+	  overflow: hidden;
+	  margin: 0 auto;
+	}
+  }
+  .right {
+	float: right;
+	height: 100px;
+	margin: 10px;
+	width: 55%;
+	padding: 15px;
+	background-color: $gray-lighter;
+
+	.user {
+	  line-height: 10px;
+	  padding-left: 10px;
+	  line-height: 18px;
+
+	  .full-name {
+		margin-bottom: 5px;
+		overflow: hidden;
+	  }
+
+	  .role {
+		color: #2B7CBE;
+	  }
+	}
+  }
+  .bottom {
+	padding: 25px;
+	float: left;
+	width: 100%;
+
+  }
+}

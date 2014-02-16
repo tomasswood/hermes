@@ -1,0 +1,21 @@
+RewriteEngine on
+
+SetEnvIf Host www.flindle.com$ CI_ENV=production
+SetEnvIf Host flindle.com$ CI_ENV=production
+SetEnvIf Host www.flindle.com/test$ CI_ENV=development
+SetEnvIf Host flindle.com/test$ CI_ENV=development
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule .* index.php/$0 [PT]  
+
+# Extract the subdomain part of domain.com
+RewriteCond %{HTTP_HOST} ^([^\.]*)\.flindle\.com$ [OR]
+RewriteCond %{HTTP_HOST} ^www\.([^\.]*)\.flindle\.com$
+ 
+# Check that the subdomain part is not www and ftp and mail
+RewriteCond %1 !^(www|ftp|webmail|cpanel|mail)$ [NC]
+
+# Redirect all requests to a php script passing as argument the subdomain
+RewriteRule ^.*$ http://www.flindle.com?alias=%1 [R,L]
+ 
