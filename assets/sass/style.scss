@@ -26,8 +26,15 @@
 @import "forms";
 @import "buttons";
 // Components: common
+<<<<<<< HEAD:assets/sass/style.scss
 @import "footer";
 @import "hero";
+=======
+@import "header";
+@import "page";
+@import "editortoolbar";
+@import "lefttoolbar";
+>>>>>>> origin/TomHan:sass/style.scss
 @import "sidebar";
 @import "checklist";
 @import "component-animations";

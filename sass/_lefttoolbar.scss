@@ -1,0 +1,25 @@
+// Base styles
+// -------------------------
+
+#left-toolbar {
+  position: fixed;
+  width: 100px;
+  height: 100%;
+  top: 51px;
+  background: #2B2B2B;
+  color: #fff;
+
+  ul.menu {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	cursor: pointer;
+
+	li {
+	  width: 100%;
+	  padding: 10px 5px;
+	  text-align: center;
+	  font-weight: bold;
+	}
+  }
+}

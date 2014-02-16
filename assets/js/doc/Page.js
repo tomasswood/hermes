@@ -20,7 +20,8 @@ function addElement(element)
 
 function elementTextbox(id)
 {
-	var ELEMENT_TEXTBOX = '<div id="ID'+ id +'" class="textbox element" data-type="Textbox">Test</div>';
+	//var ELEMENT_TEXTBOX = '<div id="ID'+ id +'" class="textbox element" data-type="Textbox">Test</div>';
+	var ELEMENT_TEXTBOX = '<div id="ID'+ id +'" class="textbox element" data-type="Textbox"><div class="content"></div></div>';
 
 	return ELEMENT_TEXTBOX;
 }
@@ -134,6 +135,7 @@ $(document).ready(function() {
 	// ==============================================
 	// RIGHT CLICK
 	// ==============================================
+    /*
 		if (document.addEventListener) {
 			document.addEventListener('contextmenu', function(e) {
 				alert("You've tried to open context menu"); //here you draw your own menu
@@ -144,7 +146,7 @@ $(document).ready(function() {
 				alert("You've tried to open context menu");
 				window.event.returnValue = false;
 			});
-		}
+		}*/
 
 	// ==============================================
 	// SELECTION
