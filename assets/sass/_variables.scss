@@ -5,9 +5,16 @@
 // Global values
 // --------------------------------------------------
 
+// Elements
+// -------------------------
+$element-gray: rgb(219, 219, 219);
+$element-modify: rgb(0, 170, 255);
+$element-active: rgb(131, 210, 255);
+$element-active-semi-transparent: rgba(131, 210, 255, 0.5);
+$element-active-near-transparent: rgba(131, 210, 255, 0.1);
+
 // Grays
 // -------------------------
-
 $gray-darker: lighten(#000, 13.5%) !default;
 // #222
 $gray-dark: lighten(#000, 20%) !default;
@@ -688,4 +695,4 @@ $sidebar-tablet: 100% !default;
 $sidebar-desktop: 210px !default;
 
 // Large screen / wide desktop
-$sidebar-lg-desktop: 275px !default;
+$sidebar-lg-desktop: 375px !default;

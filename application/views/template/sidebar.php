@@ -8,7 +8,11 @@
 			<li>
 				<span class="heading">Element Data</span>
 				<ul id="element-data" class="sidebar-submenu expanded">
-					<p class="text-center">No element currently selected.</p>
+					<li id="selected-id" class="text-center">No element currently selected.</li>
+					<li class="value">
+						<label>Value</label>
+						<textarea id="element-attr-value" class="form-control" type="text"></textarea>
+					</li>
 				</ul>
 			</li>
 		</ul>

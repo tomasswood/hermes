@@ -3,11 +3,11 @@
 
 #left-toolbar {
   position: fixed;
-  width: 100px;
+  width: 200px;
   height: 100%;
   top: 51px;
-  background: #2B2B2B;
-  color: #fff;
+  background: $sidebar-bg;
+  color: $sidebar-header-text;
 
   ul.menu {
 	margin: 0;
@@ -20,6 +20,40 @@
 	  padding: 10px 5px;
 	  text-align: center;
 	  font-weight: bold;
+
+
+	  .element-selector {
+		width: 150px;
+		height: 125px;
+		-webkit-border-radius: 15px;
+		border-radius: 15px;
+		background-color: $gray-lighter;
+		cursor: pointer;
+		margin: 0 auto;
+
+		.element-selector-container {
+		  position: relative;
+		  top: 5px;
+		  left: 5px;
+		  width: 140px;
+		  height: 75px;
+		  -webkit-border-radius: 15px 15px 0 0;
+		  border-radius: 15px 15px 0 0;
+		  background-color: $almost-white;
+		}
+		.element-selector-text {
+		  font-family: Candara, Calibri, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+		  line-height: 50px;
+		  color: $gray-dark;
+		  font-size: 16px;
+		  text-align: center;
+		}
+
+		&:hover {
+		  background-color: $element-active;
+		}
+	  }
+
 	}
   }
 }

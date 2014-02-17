@@ -33,7 +33,7 @@ function elementTextbox(id)
 							+ '<div class="copy"><span class="glyphicon glyphicon-plus"></span></div>'
 							+ '<div class="edit"><span class="glyphicon glyphicon-pencil"></span></div>'
 						+ '</div>'
-						+ '<div class="content"></div>'
+						+ '<div class="content" contenteditable="true"></div>'
 					+ '</div>';
 
 	return element_textbox;
@@ -60,6 +60,7 @@ function activeSelect(element)
 function activeDeselect()
 {
 	$('.toolbar').hide();
+	$('#context-menu').hide();
 	$('.active').removeClass('active');
 }
 
@@ -92,12 +93,12 @@ function initializeDraggable()
 			styleSelect(SELECTED);
 		},
 		drag: function( event, ui ){
-			// Update sidebar #element-data as we drag
-			sidebarShowElementData(getElementData(SELECTED));
 		},
 		stop: function( event, ui ){
 			// Unstyle the element
 			styleDeselect(SELECTED);
+			// Update sidebar #element-data as we drag
+			sidebarShowElementData(getElementData(SELECTED));
 		},
 		grid: [ GRIDX, GRIDY ],
 		handle: ".toolbar"
@@ -111,11 +112,11 @@ function initializeDraggable()
 			styleSelect(SELECTED);
 		},
 		resize: function( event, ui ){
-			// Update sidebar #element-data as we resize
-			sidebarShowElementData(getElementData(SELECTED));
 		},
 		stop: function( event, ui ){
 			styleDeselect(SELECTED);
+			// Update sidebar #element-data as we resize
+			sidebarShowElementData(getElementData(SELECTED));
 		},
 		grid: [ GRIDX, GRIDY ]
 	});
@@ -186,19 +187,18 @@ $(document).ready(function() {
 	// ==============================================
 	// RIGHT CLICK
 	// ==============================================
-	/*
-		if (document.addEventListener) {
-			document.addEventListener('contextmenu', function(e) {
-				alert("You've tried to open context menu"); //here you draw your own menu
-				e.preventDefault();
-			}, false);
-		} else {
-			document.attachEvent('oncontextmenu', function() {
-				alert("You've tried to open context menu");
-				window.event.returnValue = false;
-			});
-		}
-	*/
+	$('.page').on("contextmenu", ".element", function(e){
+		SELECTED = $(this);
+		changeActiveElement(SELECTED);
+		e.stopPropagation();
+
+		var y = $(this).position().top;
+		var x = $(this).position().left;
+
+		$("#context-menu").css({'top':y,'left':x});
+		$('#context-menu').show();
+		return false;
+	});
 	// ==============================================
 	// SELECTION
 	// ==============================================
@@ -207,32 +207,30 @@ $(document).ready(function() {
 		if( !exclude_div.is( e.target ) )  // if target div is not the one you want to exclude then add the class hidden
 			$('#context-menu').hide();
 	});
+
 	$('.page').click(function() {
+		SELECTED = $(); // Empty our SELECTED object, but keep it as a jQuery object
 		activeDeselect();
 		sidebarShowElementData(null);
 	});
-	$('.page').on('click', '.element' ,function(e){
-		SELECTED = $(this);
-		changeActiveElement(SELECTED);
-		e.stopPropagation(); //THIS CUNT!
-	});
-	$('.page').on('mouseover', '.element' ,function(e){
-		SELECTED = $(this);
-		changeActiveElement(SELECTED);
-		e.stopPropagation(); //THIS CUNT!
+
+	$('.page').on('click', '.element', function(e){
+		changeActive($(this), e);
 	});
 
-	$('.page').on("contextmenu", ".element", function(e){
-		SELECTED = $(this);
-		changeActiveElement(SELECTED);
-		e.stopPropagation(); //THIS CUNT!
+	function changeActive(i, e)
+	{
+		// Ensure the object has been modified before we redraw
+		if(!SELECTED.is(i))
+		{
+			SELECTED = i;
+			changeActiveElement(SELECTED);
+			e.stopPropagation();
+		}
+	}
 
-		var y = $(this).position().top;
-		var x = $(this).position().left;
-
-		$("#context-menu").css({'top':y,'left':x});
-		$('#context-menu').show();
-		return false;
+	$('.page').on('mouseover', '.element', function(e){
+		changeActive($(this), e);
 	});
 
 	$('.page').on("click", "#move-top", function(e){
@@ -257,9 +255,14 @@ $(document).ready(function() {
 	$('.page').on('click', '.edit' ,function(){
 
 	});
-	$('.page').on('click', '.remove' ,function(){
+
+	$('.page').on('click', '.remove' ,function(e){
 		$(this).parents('.element').remove();
+		activeDeselect();
+		sidebarShowElementData(null);
+		e.stopPropagation();
 	});
+
 	$('.page').on('click', '.copy' ,function(){
 
 		var orig_element = $(this).parents('.element');

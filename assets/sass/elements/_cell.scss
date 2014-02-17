@@ -6,16 +6,16 @@
 // -------------------------
 
 .element {
-  outline: dashed 2px rgb(219, 219, 219);
+  outline: dashed 2px $element-gray;
   display: block;
   z-index: 2;
 
   &.active {
-	outline: 2px dashed rgb(131, 210, 255);
+	outline: 2px dashed $element-active;
   }
 
   &.modify {
-	outline: 2px dashed rgb(0, 170, 255);
+	outline: 2px dashed $element-modify;
   }
 
   .toolbar {
@@ -25,7 +25,7 @@
 	top: -50px;
 	width: 100%;
 	z-index: -1;
-	background-color: rgba(131, 210, 255, 0.1);
+	background-color: $element-active-near-transparent;
 
 	.move, .edit, .copy, .remove {
 	  height: 100%;
@@ -37,7 +37,7 @@
 	  float: right;
 
 	  &:hover {
-	  	color: rgb(0, 170, 255);
+	  	color: $element-modify;
 	  }
 	}
 	.move {
@@ -45,12 +45,16 @@
 	  cursor: move;
 	}
   }
+
+  .content {
+	height: 100%;
+  }
 }
 
 #context-menu {
   position: absolute;
   width: auto;
-  outline: 2px dashed rgb(0, 170, 255);
+  outline: 2px dashed $element-modify;
   display: none;
   z-index: 99999;
   background-color: #FFF;
@@ -66,7 +70,7 @@
 	  cursor: pointer;
 
 	  &:hover {
-		background-color: rgba(131, 210, 255, 0.5);
+		background-color: $element-active-semi-transparent;
 	  }
 	}
   }
