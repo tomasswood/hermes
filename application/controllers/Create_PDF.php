@@ -1,16 +1,10 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Home extends MY_Controller {
+class Create_PDF extends MY_Controller {
 
 	public function index()
 	{
-		/**
-		 * Creates an example PDF TEST document using TCPDF
-		 * @package com.tecnick.tcpdf
-		 * @abstract TCPDF - Example: Default Header and Footer
-		 * @author Nicola Asuni
-		 * @since 2008-03-04
-		 */
+		$data = json_decode($this->input->post('data'), true);
 		// Include the main TCPDF library (search for installation path).
 		require_once(BASEPATH . '../assets/includes/tcpdf/tcpdf.php');
 
@@ -19,13 +13,13 @@ class Home extends MY_Controller {
 
 		// set document information
 		$pdf->SetCreator(PDF_CREATOR);
-		$pdf->SetAuthor('Nicola Asuni');
-		$pdf->SetTitle('TCPDF Example 005');
-		$pdf->SetSubject('TCPDF Tutorial');
-		$pdf->SetKeywords('TCPDF, PDF, example, test, guide');
+		$pdf->SetAuthor('Peter Jeff');
+		$pdf->SetTitle('Demo PDF Gen');
+		$pdf->SetSubject('Flindle.com');
+		$pdf->SetKeywords('PDjefF');
 
 		// set default header data
-		$pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, PDF_HEADER_TITLE.' 005', PDF_HEADER_STRING);
+		$pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, 'Page Heading', 'Header Substring');
 
 		// set header and footer fonts
 		$pdf->setHeaderFont(Array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
@@ -45,39 +39,27 @@ class Home extends MY_Controller {
 		// set image scale factor
 		$pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
 
-		// set some language-dependent strings (optional)
-		if (@file_exists(dirname(__FILE__).'/lang/eng.php')) {
-			require_once(dirname(__FILE__).'/lang/eng.php');
-			$pdf->setLanguageArray($l);
-		}
-
 		// ---------------------------------------------------------
 		$pdf->AddPage();
 
 		$pdf->SetFont('helvetica', '', 10);
 		$pdf->setCellPaddings(1, 1, 1, 1);
 		$pdf->setCellMargins(1, 1, 1, 1);
-		$pdf->SetFillColor(255, 255, 127);
-
-		$content = '<b>LEFT COLUMN</b> left column';
-		$img = '<a href="#"><img src="http://flindle.com/assets/images/header.png"></a>';
-		$y = $pdf->getY();
-
+		$pdf->SetFillColor(125, 255, 125);
 
 		// writeHTMLCell ( $w, $h, $x, $y, $html = '', $border = 0, $ln = 0, $fill = false, $reseth = true, $align = '', $autopadding = true )
-
-		// Multicell test
-		$pdf->writeHTMLCell ( 100, 100, 22, 22, $content, $border = 'LTRB', 0, true, true, '',true );
-		$pdf->writeHTMLCell ( 100, 100, 33, 33, $content, $border = 'LTRB', 0, false, true, '',true );
-		$pdf->writeHTMLCell ( 100, 100, 44, 44, $img, $border = 'LTRB', 0, false, true, '',true );
-
-
+		//============================================================+
+		// CONVERT: $data->PHP->PDF
+		//============================================================+
+		foreach($data as $d)
+		{
+			$pdf->writeHTMLCell ( $d['width'], $d['height'], $d['left'], $d['top'], '.', $border = 'LTRB', 0, true, true, '',true );
+		}
 
 		// ---------------------------------------------------------
 
 		//Close and output PDF document
 		$test = $pdf->Output(BASEPATH . '../assets/saved/' . 'yourpdf.pdf', 'F');
-
 
 		//============================================================+
 		// END OF FILE

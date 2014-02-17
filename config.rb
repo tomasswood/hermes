@@ -1,13 +1,13 @@
 # Require any additional compass plugins here.
 
-sass_dir           = "sass"
+sass_dir           = "assets/sass"
 http_path          = "/"
-css_dir            = "#{http_path}/styles"
-fonts_dir          = "#{http_path}/fonts"
-images_dir         = "#{http_path}/images"
-javascripts_dir    = "/js"
+css_dir            = "assets/styles"
+fonts_dir          = "assets/fonts"
+images_dir         = "assets/images"
+javascripts_dir    = "assets/js"
 
-# You can select you preferred output style here (can be overridden via the command line):
+# You can select your preferred output style here (can be overridden via the command line):
 #output_style = :expanded or :nested or :compact or :compressed
   if environment != :production
     output_style = :expanded

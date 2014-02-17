@@ -26,15 +26,12 @@
 @import "forms";
 @import "buttons";
 // Components: common
-<<<<<<< HEAD:assets/sass/style.scss
 @import "footer";
 @import "hero";
-=======
 @import "header";
 @import "page";
 @import "editortoolbar";
 @import "lefttoolbar";
->>>>>>> origin/TomHan:sass/style.scss
 @import "sidebar";
 @import "checklist";
 @import "component-animations";
@@ -71,23 +68,9 @@
 @import "utilities";
 // Has to be last to override when necessary
 @import "responsive-utilities";
-@import "user-calendar";
-
-// Page Specific
-@import "page/create-business";
-@import "page/dashboard";
-@import "page/index";
-@import "page/features";
-@import "page/pricing";
-@import "page/learn-more";
-@import "page/contact";
-@import "page/sign-up";
-@import "page/subscribe";
-
 
 // Final
 @import "font-face";
-
 
 @import "calendar";
 //@import "calendarfc";

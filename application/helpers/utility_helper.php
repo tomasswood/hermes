@@ -22,6 +22,10 @@
 		return js_url().'pages/';
 	}
 
+	function js_doc_url(){
+		return js_url().'doc/';
+	}
+
 	function includes_url(){
 		return asset_url().'includes/';
 	}
