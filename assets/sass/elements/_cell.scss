@@ -8,15 +8,73 @@
 .element {
   outline: dashed 2px rgb(219, 219, 219);
   display: block;
+  z-index: 2;
 
-  &:hover {
-	//cursor: move;
+  &.active {
+	outline: 2px dashed rgb(131, 210, 255);
+  }
+
+  &.modify {
+	outline: 2px dashed rgb(0, 170, 255);
+  }
+
+  .toolbar {
+	//display: none;
+	height: 50px;
+	position: absolute;
+	top: -50px;
+	width: 100%;
+	z-index: -1;
+	background-color: rgba(131, 210, 255, 0.1);
+
+	.move, .edit, .copy, .remove {
+	  height: 100%;
+	  width: 30px;
+	  display: inline-block;
+	  font-size: 24px;
+	  margin: 10px;
+	  cursor: pointer;
+	  float: right;
+
+	  &:hover {
+	  	color: rgb(0, 170, 255);
+	  }
+	}
+	.move {
+	  float: left;
+	  cursor: move;
+	}
+  }
+}
+
+#context-menu {
+  position: absolute;
+  width: auto;
+  outline: 2px dashed rgb(0, 170, 255);
+  display: none;
+  z-index: 99999;
+  background-color: #FFF;
+
+  ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+
+	li {
+	  padding: 5px 10px;
+	  font-size: 16px;
+	  cursor: pointer;
+
+	  &:hover {
+		background-color: rgba(131, 210, 255, 0.5);
+	  }
+	}
   }
 }
 
 .textbox {
   width: 200px;
-  height: 20px;
+  min-height: 20px;
   display: block;
 
   pre {

@@ -36,7 +36,6 @@
 			</div>
 			<div class="collapse navbar-collapse navbar-ex1-collapse"> <?php //TODO: Remove collapse ?>
 				<ul class="nav navbar-nav">
-					<li>Hello</li>
 				</ul>
 			</div>
 			<!-- End .navbar-collapse -->

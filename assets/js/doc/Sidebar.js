@@ -50,23 +50,28 @@ function getElementData(element)
 	return data;
 }
 
-
 function sidebarShowElementData(data)
 {
 	var displayDiv = $('#element-data');
 	// Empty current info
 	displayDiv.empty();
-
-	// Populate with new info passed in
-	var output =  '<li id="selected-id" class="text-center" data-selected="'+ data.id +'">'+ data.type + '</li>'
-		+ '<li class="value">'
-		+ '<label>Value</label>'
-		+ '<textarea id="element-attr-value" class="form-control" type="text">'+ data.value +'</textarea>'
-		+ '</li>'
-		+ '<li class="attribute"><label>Height: </label><input id="element-attr-height" class="form-control" type="text" value="'+ data.height +'"></li>'
-		+ '<li class="attribute"><label>Width: </label><input id="element-attr-width" class="form-control" type="text" value="'+ data.width +'"></li>'
-		+ '<li class="attribute"><label>Top: </label><input id="element-attr-top" class="form-control" type="text" value="'+ data.offset_top +'"></li>'
-		+ '<li class="attribute"><label>Left: </label><input id="element-attr-left" class="form-control" type="text" value="'+ data.offset_left +'"></li>';
-
+	var output = "";
+	if(data == null)
+	{
+		output += '<p class="text-center">No element currently selected.</p>';
+	}
+	else
+	{
+		// Populate with new info passed in
+		output +=  '<li id="selected-id" class="text-center" data-selected="'+ data.id +'">'+ data.type + '</li>'
+			+ '<li class="value">'
+			+ '<label>Value</label>'
+			+ '<textarea id="element-attr-value" class="form-control" type="text">'+ data.value +'</textarea>'
+			+ '</li>'
+			+ '<li class="attribute"><label>Height: </label><input id="element-attr-height" class="form-control" type="text" value="'+ data.height +'"></li>'
+			+ '<li class="attribute"><label>Width: </label><input id="element-attr-width" class="form-control" type="text" value="'+ data.width +'"></li>'
+			+ '<li class="attribute"><label>Top: </label><input id="element-attr-top" class="form-control" type="text" value="'+ data.offset_top +'"></li>'
+			+ '<li class="attribute"><label>Left: </label><input id="element-attr-left" class="form-control" type="text" value="'+ data.offset_left +'"></li>';
+	}
 	displayDiv.append(output);
 }

@@ -12,7 +12,7 @@ class Canvas extends MY_Controller {
 		));
 		$this->load->view('template/header', $header);
 		$this->load->view('canvas');
-		$this->load->view('template/editor-toolbar');
+		//$this->load->view('template/editor-toolbar');
 		$this->load->view('template/left-toolbar');
 		$this->load->view('template/sidebar');
 		$this->load->view('template/footer', array('displayType' => $display_type));

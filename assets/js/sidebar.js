@@ -21,10 +21,10 @@ $(document).ready(function() {
 		//Check if the sidebar is expanded and also calculate the padding for #page
 		if(sidebar.hasClass('expanded')) {
 			$(sidebar).animate({'marginRight': -toggleWidth}).removeClass('expanded');
-			$(".page").animate({'marginRight': 10});
+			//$(".page").animate({'marginRight': 10});
 		} else {
 			$(sidebar).animate({'marginRight': 0}).addClass('expanded');
-			$(".page").animate({'marginRight': toggleWidth - 10});
+			//$(".page").animate({'marginRight': toggleWidth - 10});
 		}
 	}
 

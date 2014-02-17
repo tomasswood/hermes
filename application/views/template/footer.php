@@ -3,7 +3,7 @@
 			if ($displayType == 'app')
 			{
 				//<!-- Issue collector for Jira -->
-				echo '<script type="text/javascript" src="https://flindle.atlassian.net/s/d41d8cd98f00b204e9800998ecf8427e/en_UKnh8jyk-1988229788/6207/13/1.4.3/_/download/batch/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector.js?collectorId=6075ec01"></script>';
+				//echo '<script type="text/javascript" src="https://flindle.atlassian.net/s/d41d8cd98f00b204e9800998ecf8427e/en_UKnh8jyk-1988229788/6207/13/1.4.3/_/download/batch/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector.js?collectorId=6075ec01"></script>';
 			}
 			else
 			{

@@ -2814,6 +2814,7 @@ a.btn:hover {
   top: 0;
   left: 0;
   height: 50px;
+  width: 100%;
   background: #2b7cbe;
 }
 
@@ -2897,65 +2898,45 @@ a.btn:hover {
   #sidebar {
     width: 100%;
     float: none;
-    position: relative;
-  }
-  /* line 11, ../sass/_sidebar.scss */
-  #sidebar #sidebar-toggle {
-    position: relative;
-    width: 100%;
-    height: 20px;
-    border-bottom: 1px solid;
   }
 }
 @media (min-width: 768px) {
-  /* line 21, ../sass/_sidebar.scss */
+  /* line 13, ../sass/_sidebar.scss */
   #sidebar {
     width: 210px;
-    position: fixed;
-  }
-  /* line 25, ../sass/_sidebar.scss */
-  #sidebar #sidebar-toggle {
-    height: 100%;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    margin-right: -10px;
-    position: absolute;
-    width: 10px;
-    border-right: 1px solid;
-    border-left: 1px solid;
   }
 }
 @media (min-width: 1200px) {
-  /* line 40, ../sass/_sidebar.scss */
+  /* line 19, ../sass/_sidebar.scss */
   #sidebar {
     width: 275px;
-    position: fixed;
   }
 }
-/* line 46, ../sass/_sidebar.scss */
+/* line 24, ../sass/_sidebar.scss */
 #sidebar {
-  top: 0;
+  position: fixed;
+  top: 51px;
+  right: 0;
   bottom: 0;
   z-index: 11;
   float: left;
   background: #bab9b9;
 }
-/* line 53, ../sass/_sidebar.scss */
+/* line 33, ../sass/_sidebar.scss */
 #sidebar .sidebar-inner {
+  float: left;
   height: 100%;
   width: 100%;
+  padding-left: 10px;
   overflow-y: auto;
-  overflow-x: hidden;
 }
-/* line 59, ../sass/_sidebar.scss */
+/* line 40, ../sass/_sidebar.scss */
 #sidebar .sidebar-inner ul {
   list-style-type: none;
   padding: 0;
   margin: 0;
-  clear: both;
 }
-/* line 65, ../sass/_sidebar.scss */
+/* line 45, ../sass/_sidebar.scss */
 #sidebar .sidebar-inner ul li {
   display: block;
   width: 100%;
@@ -2965,9 +2946,8 @@ a.btn:hover {
   overflow: hidden;
   line-height: 40px;
 }
-/* line 74, ../sass/_sidebar.scss */
+/* line 54, ../sass/_sidebar.scss */
 #sidebar .sidebar-inner ul li .heading {
-  text-shadow: 0 1px 0 #EBEBEB;
   position: relative;
   overflow: hidden;
   display: block;
@@ -2988,28 +2968,28 @@ a.btn:hover {
   line-height: 40px;
   text-decoration: none;
 }
-/* line 93, ../sass/_sidebar.scss */
+/* line 72, ../sass/_sidebar.scss */
 #sidebar .sidebar-inner ul li .heading:hover {
   cursor: pointer;
 }
-/* line 101, ../sass/_sidebar.scss */
+/* line 80, ../sass/_sidebar.scss */
 #sidebar .sidebar-inner ul li .sidebar-toggle {
   color: #5e5e5e;
 }
-/* line 105, ../sass/_sidebar.scss */
+/* line 84, ../sass/_sidebar.scss */
 #sidebar .sidebar-inner ul li a {
   padding-left: 15px;
   text-decoration: none;
 }
-/* line 109, ../sass/_sidebar.scss */
+/* line 88, ../sass/_sidebar.scss */
 #sidebar .sidebar-inner ul li a:hover {
   text-decoration: underline;
 }
-/* line 113, ../sass/_sidebar.scss */
+/* line 92, ../sass/_sidebar.scss */
 #sidebar .sidebar-inner ul li a.single {
   padding-left: 0;
 }
-/* line 116, ../sass/_sidebar.scss */
+/* line 95, ../sass/_sidebar.scss */
 #sidebar .sidebar-inner ul li ul {
   width: 100%;
   height: auto;
@@ -3017,20 +2997,20 @@ a.btn:hover {
   border-top: 3px solid #dadada;
   border-bottom: 1px solid #aeadad;
 }
-/* line 126, ../sass/_sidebar.scss */
+/* line 103, ../sass/_sidebar.scss */
 #sidebar .sidebar-inner ul li ul li {
-  width: 95%;
-  padding: 0 0 0 5%;
+  width: 100%;
+  padding: 0 5%;
   line-height: 25px;
   color: #5f5f5f;
 }
-/* line 135, ../sass/_sidebar.scss */
+/* line 110, ../sass/_sidebar.scss */
 #sidebar .sidebar-inner ul li ul li span,
 #sidebar .sidebar-inner ul li ul li a {
   background: none;
   color: #5f5f5f;
 }
-/* line 152, ../sass/_sidebar.scss */
+/* line 123, ../sass/_sidebar.scss */
 #sidebar .sidebar-inner ul li input,
 #sidebar .sidebar-inner ul li select,
 #sidebar .sidebar-inner ul li textarea {
@@ -3040,21 +3020,24 @@ a.btn:hover {
   box-shadow: none;
   line-height: 40px;
 }
-/* line 164, ../sass/_sidebar.scss */
-#sidebar .sidebar-inner ul li input {
-  height: 18px;
-}
-/* line 175, ../sass/_sidebar.scss */
+/* line 138, ../sass/_sidebar.scss */
 #sidebar #sidebar-toggle {
+  top: 0;
+  bottom: 0;
+  left: 0;
+  margin-right: -10px;
+  position: absolute;
   z-index: 999;
+  width: 10px;
   background: #dadada;
-  border-color: #999999;
+  border-left: 1px solid #999999;
+  border-right: 1px solid #999999;
 }
-/* line 181, ../sass/_sidebar.scss */
+/* line 150, ../sass/_sidebar.scss */
 #sidebar #sidebar-toggle:hover {
   cursor: pointer;
 }
-/* line 188, ../sass/_sidebar.scss */
+/* line 157, ../sass/_sidebar.scss */
 #sidebar .heading-toggle {
   z-index: 999;
   background: none;
@@ -3064,151 +3047,40 @@ a.btn:hover {
   top: 0;
   color: #838383;
   cursor: pointer;
-  text-shadow: 0 1px 0 #EBEBEB;
 }
 
-/* line 205, ../sass/_sidebar.scss */
-#userpane .row {
-  background: #405272;
-  color: #fff;
-  margin: 0;
-  min-height: 90px;
-  box-shadow: inset rgba(0, 0, 0, 0.3) 0 0 10px;
+/* line 173, ../sass/_sidebar.scss */
+#element-data li.value {
+  padding: 5% !important;
+  margin: 5px 0 15px 0;
+  border-top: 1px solid #B0CCD4;
+  border-bottom: 1px solid #B0CCD4;
+  background: #D7E8EC;
 }
-/* line 213, ../sass/_sidebar.scss */
-#userpane .left {
-  float: left;
-  width: 40%;
-  height: 100%;
-}
-/* line 218, ../sass/_sidebar.scss */
-#userpane .left .avatar {
-  padding: 7px;
-  height: 100%;
-}
-/* line 222, ../sass/_sidebar.scss */
-#userpane .left .avatar a {
-  height: 100%;
-  width: 100%;
+/* line 180, ../sass/_sidebar.scss */
+#element-data li.value label {
   display: block;
+  text-align: center;
 }
-/* line 228, ../sass/_sidebar.scss */
-#userpane .left .avatar img {
-  width: 90%;
-  border-radius: 5px;
-  max-width: 160px;
+/* line 185, ../sass/_sidebar.scss */
+#element-data li.value #element-attr-value {
+  min-height: 60px;
+  line-height: normal;
+  resize: vertical;
 }
-/* line 236, ../sass/_sidebar.scss */
-#userpane .right {
+/* line 194, ../sass/_sidebar.scss */
+#element-data li.attribute label {
+  width: 30%;
   float: left;
-  width: 60%;
-  height: 100%;
-  position: relative;
+  line-height: 40px;
 }
-/* line 242, ../sass/_sidebar.scss */
-#userpane .right .user {
-  margin: 5px;
-  width: 90%;
-}
-/* line 246, ../sass/_sidebar.scss */
-#userpane .right .user .name {
-  font-weight: bold;
-  font-size: 16px;
-  color: #E7BF3F;
-}
-/* line 252, ../sass/_sidebar.scss */
-#userpane .right .user .role {
-  color: #BCCFF0;
-  font-weight: bold;
-  font-size: 12px;
-}
-/* line 259, ../sass/_sidebar.scss */
-#userpane .right .business {
-  width: 90%;
-  background: #324361;
-  padding: 5px;
-  font-weight: bold;
-  color: #9FC2F7;
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
-}
-
-@media (max-width: 768px) {
-  /* line 273, ../sass/_sidebar.scss */
-  #userpane {
-    font-size: 22px;
-  }
-  /* line 276, ../sass/_sidebar.scss */
-  #userpane .row {
-    height: 150px !important;
-  }
-  /* line 286, ../sass/_sidebar.scss */
-  #userpane .right .business {
-    margin-top: 20px;
-    border-radius: 5px;
-  }
-  /* line 291, ../sass/_sidebar.scss */
-  #userpane .right .name {
-    font-size: 22px !important;
-  }
-  /* line 295, ../sass/_sidebar.scss */
-  #userpane .right .role {
-    font-size: 16px !important;
-  }
-}
-/* line 303, ../sass/_sidebar.scss */
-#user-menu .left {
-  float: left;
-  display: block;
-  width: 100%;
-  height: 100%;
-}
-/* line 309, ../sass/_sidebar.scss */
-#user-menu .left div.avatar {
-  width: 64px;
-  height: 64px;
-  display: block;
-  margin: 8px;
-  -webkit-border-top-left-radius: 5px;
-  -webkit-border-top-right-radius: 5px;
-  -webkit-border-bottom-right-radius: 5px;
-  -webkit-border-bottom-left-radius: 5px;
-  -moz-border-radius-topleft: 5px;
-  -moz-border-radius-topright: 5px;
-  -moz-border-radius-bottomright: 5px;
-  -moz-border-radius-bottomleft: 5px;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
-  border-bottom-left-radius: 5px;
-  overflow: hidden;
-}
-/* line 318, ../sass/_sidebar.scss */
-#user-menu .right {
-  float: left;
-  display: block;
-  width: 100%;
-  height: 100%;
-}
-/* line 324, ../sass/_sidebar.scss */
-#user-menu .right .user {
+/* line 200, ../sass/_sidebar.scss */
+#element-data li.attribute input {
+  width: 70%;
   height: 30px;
-  margin-top: 3px;
-}
-/* line 328, ../sass/_sidebar.scss */
-#user-menu .right .user .full-name {
-  height: 20px;
-  color: #ffb802;
-  font-size: 16px;
-  font-weight: bold;
-}
-/* line 335, ../sass/_sidebar.scss */
-#user-menu .right .user .role {
-  height: 10px;
-  color: #bdbdbd;
-  font-size: 12px;
-  font-style: italic;
-  font-weight: bold;
+  line-height: 30px;
+  float: left;
+  text-align: center;
 }
 
 /* line 5, ../sass/_checklist.scss */
@@ -9566,4 +9438,119 @@ td.visible-print {
 /* line 520, ../sass/_calendar.scss */
 #refno.pending .sub {
   color: #C59C54;
+}
+
+/* line 8, ../sass/elements/_cell.scss */
+.element {
+  outline: dashed 2px #dbdbdb;
+  display: block;
+  z-index: 2;
+}
+/* line 13, ../sass/elements/_cell.scss */
+.element.active {
+  outline: 2px dashed #83d2ff;
+}
+/* line 17, ../sass/elements/_cell.scss */
+.element.modify {
+  outline: 2px dashed #00aaff;
+}
+/* line 21, ../sass/elements/_cell.scss */
+.element .toolbar {
+  height: 50px;
+  position: absolute;
+  top: -50px;
+  width: 100%;
+  z-index: -1;
+  background-color: rgba(131, 210, 255, 0.1);
+}
+/* line 30, ../sass/elements/_cell.scss */
+.element .toolbar .move, .element .toolbar .edit, .element .toolbar .copy, .element .toolbar .remove {
+  height: 100%;
+  width: 30px;
+  display: inline-block;
+  font-size: 24px;
+  margin: 10px;
+  cursor: pointer;
+  float: right;
+}
+/* line 39, ../sass/elements/_cell.scss */
+.element .toolbar .move:hover, .element .toolbar .edit:hover, .element .toolbar .copy:hover, .element .toolbar .remove:hover {
+  color: #00aaff;
+}
+/* line 43, ../sass/elements/_cell.scss */
+.element .toolbar .move {
+  float: left;
+  cursor: move;
+}
+
+/* line 50, ../sass/elements/_cell.scss */
+#context-menu {
+  position: absolute;
+  width: auto;
+  outline: 2px dashed #00aaff;
+  display: none;
+  z-index: 99999;
+  background-color: #FFF;
+}
+/* line 58, ../sass/elements/_cell.scss */
+#context-menu ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+/* line 63, ../sass/elements/_cell.scss */
+#context-menu ul li {
+  padding: 5px 10px;
+  font-size: 16px;
+  cursor: pointer;
+}
+/* line 68, ../sass/elements/_cell.scss */
+#context-menu ul li:hover {
+  background-color: rgba(131, 210, 255, 0.5);
+}
+
+/* line 75, ../sass/elements/_cell.scss */
+.textbox {
+  width: 200px;
+  min-height: 20px;
+  display: block;
+}
+/* line 80, ../sass/elements/_cell.scss */
+.textbox pre {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* line 90, ../sass/elements/_cell.scss */
+.ui-resizable-e {
+  position: absolute;
+  top: 0;
+  right: -4px;
+  height: 100%;
+  width: 8px;
+  cursor: e-resize;
+}
+
+/* line 99, ../sass/elements/_cell.scss */
+.ui-resizable-s {
+  position: absolute;
+  bottom: -4px;
+  height: 8px;
+  width: 100%;
+  cursor: ns-resize;
+}
+
+/* line 107, ../sass/elements/_cell.scss */
+.ui-resizable-se {
+  position: absolute;
+  bottom: -2px;
+  right: -2px;
+  height: 8px;
+  width: 8px;
+  background: #D8D8D8;
+  cursor: nw-resize;
 }
