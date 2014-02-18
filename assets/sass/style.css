@@ -1,6 +1,6 @@
 /*
 Syntax error: File to import not found or unreadable: compass.
-              Load path: C:/xampp/htdocs/pegasus/assets/sass
+              Load path: C:/xampp/htdocs/hermes/assets/sass
         on line 13 of style.scss
 
 8:  * Designed and built with all the love in the world by @mdo and @fat.
@@ -54,4 +54,4 @@ C:/Ruby200-x64/bin/scss:23:in `<main>'
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Syntax error: File to import not found or unreadable: compass.\A               Load path: C:/xampp/htdocs/pegasus/assets/sass\A         on line 13 of style.scss\A \A 8:  * Designed and built with all the love in the world by @mdo and @fat.\A 9:  * \A 10:  * Sass -ified by Aaron Lademann @alademann\A 11:  */\A 12: // Compass utilities\A 13: @import \"compass\";\A 14: // Core variables and mixins\A 15: @import \"variables\";\A 16: @import \"mixins\";\A 17: // Reset\A 18: @import \"normalize\";"; }
+  content: "Syntax error: File to import not found or unreadable: compass.\A               Load path: C:/xampp/htdocs/hermes/assets/sass\A         on line 13 of style.scss\A \A 8:  * Designed and built with all the love in the world by @mdo and @fat.\A 9:  * \A 10:  * Sass -ified by Aaron Lademann @alademann\A 11:  */\A 12: // Compass utilities\A 13: @import \"compass\";\A 14: // Core variables and mixins\A 15: @import \"variables\";\A 16: @import \"mixins\";\A 17: // Reset\A 18: @import \"normalize\";"; }

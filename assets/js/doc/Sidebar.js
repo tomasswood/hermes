@@ -14,7 +14,7 @@ $(document).ready(function() {
 	// ATTRIBUTE CHANGES
 	// ----------------------------------------------
 	$(document.body).on('change', '#element-attr-value' ,function(){
-		SELECTED.children('.content').text($(this).val());
+		SELECTED.children('.content').html($(this).val());
 	});
 
 	$(document.body).on('change', '#element-attr-height' ,function(){
@@ -40,7 +40,7 @@ function getElementData(element)
 	var data = {
 		"id": $(element).attr('id'),
 		"type": $(element).data('type'),
-		"value": $(element).children('.content').text(),
+		"value": $(element).children('.content').html(),
 		"height": $(element).height(),
 		"width": $(element).width(),
 		"offset_top": $(element).position().top,
@@ -71,5 +71,18 @@ function sidebarShowElementData(data)
 	}
 	$('#element-data').append(output);
 
-	createEditor('element-attr-value');
+	tinymce.init({
+		selector: ".content",
+		inline: true,
+		fixed_toolbar_container: '#editor-toolbar',
+		theme: "modern",
+		plugins: [
+			"advlist autolink lists link image charmap print preview hr anchor pagebreak",
+			"searchreplace wordcount visualblocks visualchars code fullscreen",
+			"insertdatetime media nonbreaking save table contextmenu directionality",
+			"emoticons template paste textcolor"
+		],
+		toolbar1: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image print preview media | forecolor backcolor emoticons",
+		image_advtab: true
+	});
 }

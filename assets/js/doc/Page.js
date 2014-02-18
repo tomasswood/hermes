@@ -33,7 +33,7 @@ function elementTextbox(id)
 							+ '<div class="copy"><span class="glyphicon glyphicon-plus"></span></div>'
 							+ '<div class="edit"><span class="glyphicon glyphicon-pencil"></span></div>'
 						+ '</div>'
-						+ '<div class="content" contenteditable="true"></div>'
+						+ '<div class="content form-control"></div>'
 					+ '</div>';
 
 	return element_textbox;
@@ -101,7 +101,7 @@ function initializeDraggable()
 			sidebarShowElementData(getElementData(SELECTED));
 		},
 		grid: [ GRIDX, GRIDY ],
-		handle: ".toolbar"
+		handle: ".move"
 	});
 
 	// Resizable
@@ -218,45 +218,45 @@ $(document).ready(function() {
 		changeActive($(this), e);
 	});
 
+	$('.page').on('keyup', '.content', function(){
+		$('#element-attr-value').val($(this).html());
+	});
+
 	function changeActive(i, e)
 	{
-		// Ensure the object has been modified before we redraw
-		if(!SELECTED.is(i))
-		{
-			SELECTED = i;
-			changeActiveElement(SELECTED);
-			e.stopPropagation();
-		}
+		SELECTED = i;
+		changeActiveElement(SELECTED);
+		e.stopPropagation();
 	}
 
-	$('.page').on('mouseover', '.element', function(e){
-		changeActive($(this), e);
+	$('.page').on('mouseover', '.element', function(){
+		$(this).find('.toolbar').show();
 	});
 
-	$('.page').on("click", "#move-top", function(e){
-		var z_index = highestZIndex(".element");
-		SELECTED.css('z-index', z_index);
+	$('.page').on("click", "#move-top", function(){
+		var z_index = parseInt(highestZIndex(".element"));
+		SELECTED.css('z-index', z_index + 1);
 	});
 
-	$('.page').on("click", "#move-up", function(e){
+	$('.page').on("click", "#move-up", function(){
 		var z_index = parseInt(SELECTED.css('z-index'));
 		SELECTED.css('z-index', z_index + 1);
 	});
 
-	$('.page').on("click", "#move-down", function(e){
+	$('.page').on("click", "#move-down", function(){
 		var z_index = parseInt(SELECTED.css('z-index'));
 		SELECTED.css('z-index', z_index - 1);
 	});
 
-	$('.page').on("click", "#move-bottom", function(e){
+	$('.page').on("click", "#move-bottom", function(){
 		SELECTED.css('z-index', 0);
 	});
 
 	$('.page').on('click', '.edit' ,function(){
-
+		$(this).parents('.element').find('.content').focus();
 	});
 
-	$('.page').on('click', '.remove' ,function(e){
+	$('.page').on('click', '.remove' ,function(){
 		$(this).parents('.element').remove();
 		activeDeselect();
 		sidebarShowElementData(null);
@@ -272,5 +272,6 @@ $(document).ready(function() {
 		ID_COUNTER++;
 
 		orig_element.after(new_element);
+		initializeDraggable();
 	});
 });

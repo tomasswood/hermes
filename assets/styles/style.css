@@ -2839,7 +2839,7 @@ a.btn:hover {
   width: 960px;
   height: 1358px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-  margin: 0 auto;
+  margin: 25px auto 0;
   background: #fff;
 }
 
@@ -3097,7 +3097,7 @@ a.btn:hover {
 }
 /* line 185, ../sass/_sidebar.scss */
 #element-data li.value #element-attr-value {
-  min-height: 60px;
+  min-height: 137px;
   line-height: normal;
   resize: vertical;
 }
@@ -9518,9 +9518,11 @@ td.visible-print {
 /* line 49, ../sass/elements/_cell.scss */
 .element .content {
   height: 100%;
+  width: 100%;
+  line-height: 10px;
 }
 
-/* line 54, ../sass/elements/_cell.scss */
+/* line 56, ../sass/elements/_cell.scss */
 #context-menu {
   position: absolute;
   width: auto;
@@ -9529,30 +9531,30 @@ td.visible-print {
   z-index: 99999;
   background-color: #FFF;
 }
-/* line 62, ../sass/elements/_cell.scss */
+/* line 64, ../sass/elements/_cell.scss */
 #context-menu ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
 }
-/* line 67, ../sass/elements/_cell.scss */
+/* line 69, ../sass/elements/_cell.scss */
 #context-menu ul li {
   padding: 5px 10px;
   font-size: 16px;
   cursor: pointer;
 }
-/* line 72, ../sass/elements/_cell.scss */
+/* line 74, ../sass/elements/_cell.scss */
 #context-menu ul li:hover {
   background-color: rgba(131, 210, 255, 0.5);
 }
 
-/* line 79, ../sass/elements/_cell.scss */
+/* line 81, ../sass/elements/_cell.scss */
 .textbox {
   width: 200px;
   min-height: 20px;
   display: block;
 }
-/* line 84, ../sass/elements/_cell.scss */
+/* line 86, ../sass/elements/_cell.scss */
 .textbox pre {
   width: 100%;
   height: 100%;
@@ -9562,7 +9564,7 @@ td.visible-print {
   padding: 0;
 }
 
-/* line 94, ../sass/elements/_cell.scss */
+/* line 96, ../sass/elements/_cell.scss */
 .ui-resizable-e {
   position: absolute;
   top: 0;
@@ -9572,7 +9574,7 @@ td.visible-print {
   cursor: e-resize;
 }
 
-/* line 103, ../sass/elements/_cell.scss */
+/* line 105, ../sass/elements/_cell.scss */
 .ui-resizable-s {
   position: absolute;
   bottom: -4px;
@@ -9581,7 +9583,7 @@ td.visible-print {
   cursor: ns-resize;
 }
 
-/* line 111, ../sass/elements/_cell.scss */
+/* line 113, ../sass/elements/_cell.scss */
 .ui-resizable-se {
   position: absolute;
   bottom: -2px;

@@ -24,30 +24,6 @@
 			include_once($_SERVER['DOCUMENT_ROOT'] . "/assets/includes/ga.php");
 		}
 	?>
-	<script type="text/javascript">
-		function createEditor(id) {
-			var ed = new tinymce.Editor(id, {
-				inline: true,
-				plugins: [
-					"advlist autolink lists link image charmap print preview anchor",
-					"searchreplace visualblocks code fullscreen",
-					"insertdatetime media table contextmenu paste"
-				],
-				toolbar: "insertfile undo redo | styleselect customfontsizeselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
-				setup: function(editor) {
-					editor.on('init', function(e) {
-						editor.focus();
-					});
-					editor.on('blur', function(e) {
-						editor.remove();
-						return false;
-					});
-				}
-			}, tinymce.EditorManager);
-			ed.render();
-			console.log(tinymce.editors);
-		}
-	</script>
 </head>
 <body>
 <!-- #header -->

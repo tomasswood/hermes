@@ -10,7 +10,7 @@
 				<ul id="element-data" class="sidebar-submenu expanded">
 					<li id="selected-id" class="text-center">No element currently selected.</li>
 					<li class="value">
-						<label>Value</label>
+						<label>HTML</label>
 						<textarea id="element-attr-value" class="form-control" type="text"></textarea>
 					</li>
 				</ul>
