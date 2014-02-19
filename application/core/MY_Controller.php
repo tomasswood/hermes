@@ -11,7 +11,7 @@
 			}
 
 			$this->load->library(array(
-				'common'
+				//'common'
 				//'biz',
 				//'user'
 			));
