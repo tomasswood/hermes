@@ -13,8 +13,8 @@ var GRIDY = GRIDX; // How large our Y grid space is
 // ----------------------------------
 function addElement(element)
 {
-	activeDeselect();
-	$('.page').append(element);
+	activeDeselect(); // Unselect our Active element
+	$('.page').append(element); // Add our new element to the page
 	// Reinitialize draggable so it recognizes dynamically added element
 	initializeDraggable();
 	// Change our Active Element
@@ -24,6 +24,7 @@ function addElement(element)
 	ID_COUNTER++;
 }
 
+// Textbox element
 function elementTextbox(id)
 {
 	var element_textbox = '<div id="ID'+ id +'" class="textbox element active" style="z-index:' + ID_COUNTER + ';" data-type="Textbox">'
@@ -39,21 +40,24 @@ function elementTextbox(id)
 	return element_textbox;
 }
 
+// Add styling for dragging/resizing
 function styleSelect(element)
 {
 	$('.modify').removeClass('modify');
 	element.addClass('modify');
 }
 
+// Remove styling for dragging/resizing
 function styleDeselect(element)
 {
 	element.removeClass('modify');
 }
 
+// Add styling for selecting our Element
 function activeSelect(element)
 {
-	activeDeselect();
-	element.children('.toolbar').show();
+	activeDeselect(); // Deselect any other elements
+	element.children('.toolbar').show(); // Display the toolbar
 	element.addClass('active');
 }
 
@@ -64,6 +68,7 @@ function activeDeselect()
 	$('.active').removeClass('active');
 }
 
+// Return the highest Z-Index of element type
 function highestZIndex(element)
 {
 	var index_highest = 0;
@@ -124,8 +129,14 @@ function initializeDraggable()
 
 function changeActiveElement(element)
 {
-	activeSelect(element);
-	sidebarShowElementData(getElementData(element));
+	activeSelect(element); // Style our Active Element
+	sidebarShowElementData(getElementData(element)); // Display it in the Sidebar
+}
+
+// Return whether the current item is our Active Element or not
+function isActiveElement(i)
+{
+	return i.is(SELECTED);
 }
 
 // ==============================================
@@ -191,10 +202,15 @@ $(document).ready(function() {
 	// RIGHT CLICK
 	// ==============================================
 	$('.page').on("contextmenu", ".element", function(e){
-		SELECTED = $(this);
-		changeActiveElement(SELECTED);
-		e.stopPropagation();
+		// Set the Element as Active if it isn't already
+		if(!isActiveElement($(this)))
+		{
+			SELECTED = $(this);
+			changeActiveElement(SELECTED);
+			e.stopPropagation();
+		}
 
+		// Display our Context menu on the current element
 		var y = $(this).position().top;
 		var x = $(this).position().left;
 
@@ -202,29 +218,34 @@ $(document).ready(function() {
 		$('#context-menu').show();
 		return false;
 	});
+
 	// ==============================================
 	// SELECTION
 	// ==============================================
 	$(document).click(function(e){
 		var exclude_div = $("#context-menu");
-		if( !exclude_div.is( e.target ) )  // if target div is not the one you want to exclude then add the class hidden
+		if(!exclude_div.is(e.target))  // If target div is not the one you want to exclude then hide it
 			$('#context-menu').hide();
 	});
 
+	// Deselect and clear our SELECTED element
 	$('.page').click(function() {
 		SELECTED = $(); // Empty our SELECTED object, but keep it as a jQuery object
 		activeDeselect();
 		sidebarShowElementData(null);
 	});
 
+	// Make our SELECTED element Active
 	$('.page').on('click', '.element', function(e){
 		changeActive($(this), e);
 	});
 
+	// When typing content, fill the Sidebar Textarea with HTML equivalent
 	$('.page').on('keyup', '.content', function(){
 		$('#element-attr-value').val($(this).html());
 	});
 
+	// Change our SELECTED element and make it active
 	function changeActive(i, e)
 	{
 		SELECTED = i;
@@ -232,10 +253,18 @@ $(document).ready(function() {
 		e.stopPropagation();
 	}
 
+	// ==============================================
+	// TOOLBAR/CONTEXT MENU
+	// ==============================================
+	// When hovering over an element, display it's toolbar and hide it when we leave
 	$('.page').on('mouseover', '.element', function(){
 		$(this).find('.toolbar').show();
+	}).on('mouseout', '.element', function(){
+		if(!isActiveElement($(this))) // Don't hide the toolbar if this is the currently selected element
+			$(this).find('.toolbar').hide();
 	});
 
+	// Move the Z-Index of our Element
 	$('.page').on("click", "#move-top", function(){
 		var z_index = parseInt(highestZIndex(".element"));
 		SELECTED.css('z-index', z_index + 1);
