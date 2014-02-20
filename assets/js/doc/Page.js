@@ -139,7 +139,8 @@ function pullPageData()
 			"top": ($(this).position().top * A4_MULTIPLIER) * PX_TO_MM_MULTIPLIER,
 			"left": ($(this).position().left * A4_MULTIPLIER) * PX_TO_MM_MULTIPLIER,
 			"width": ($(this).width() * A4_MULTIPLIER) * PX_TO_MM_MULTIPLIER,
-			"height": ($(this).height() * A4_MULTIPLIER) * PX_TO_MM_MULTIPLIER
+			"height": ($(this).height() * A4_MULTIPLIER) * PX_TO_MM_MULTIPLIER,
+			"values": $(this).children('.content').html()
 		};
 		page_data.push(cell);
 	})
@@ -159,6 +160,8 @@ function ajaxExportPDF(page_data)
 		success: function() {
 			console.log(JSON.stringify(page_data));
 			console.log("Exported succesfully!");
+			var newURL = window.location.protocol + "//" + window.location.host + "/hermes/assets/saved/yourpdf.pdf";
+			alert("You can find your document at: " + newURL);
 		}
 	});
 }

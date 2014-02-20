@@ -1,6 +1,6 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Create_PDF extends MY_Controller {
+class Create_pdf extends MY_Controller {
 
 	public function index()
 	{
@@ -51,9 +51,10 @@ class Create_PDF extends MY_Controller {
 		//============================================================+
 		// CONVERT: $data->PHP->PDF
 		//============================================================+
+		var_dump($data);
 		foreach($data as $d)
 		{
-			$pdf->writeHTMLCell ( $d['width'], $d['height'], $d['left'], $d['top'], '.', $border = 'LTRB', 0, true, true, '',true );
+			$pdf->writeHTMLCell ( $d['width'], $d['height'], $d['left'], $d['top'], $d['values'], $border = 'LTRB', 0, true, true, '',true );
 		}
 
 		// ---------------------------------------------------------
