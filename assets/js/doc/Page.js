@@ -196,12 +196,51 @@ $(document).ready(function() {
 	// ---------------------------------------------
 	$('#toolbar-btn-element-textbox').click(function() {
 		addElement(elementTextbox(ID_COUNTER));
-	});
+	});	
 
 	// ==============================================
-	// RIGHT CLICK
+	// SELECTION
 	// ==============================================
-	$('.page').on("contextmenu", ".element", function(e){
+
+	// Change our SELECTED element and make it active
+	function changeActive(i, e)
+	{
+		SELECTED = i;
+		changeActiveElement(SELECTED);
+		e.stopPropagation();
+	}
+
+	$(document).click(function(e){
+		var exclude_div = $("#context-menu");
+		if(!exclude_div.is(e.target))  // If target div is not the one you want to exclude then hide it
+			$('#context-menu').hide();
+	});
+
+	// Deselect and clear our SELECTED element
+	$('.page').click(function(e) {
+		if(e.target !== this) 
+       		return;
+		SELECTED = $(); // Empty our SELECTED object, but keep it as a jQuery object
+		activeDeselect();
+		sidebarShowElementData(null);
+	}).on('click', '.element', function(e){ // Make our SELECTED element Active
+		if(!isActiveElement($(this))) // Don't hide the toolbar if this is the currently selected element
+			changeActive($(this), e);
+	}).on('keyup', '.content', function(){ // When typing content, fill the Sidebar Textarea with HTML equivalent
+		$('#element-attr-value').val($(this).html());
+	});
+
+
+	// ==============================================
+	// TOOLBAR/CONTEXT MENU/RIGHT CLICK
+	// ==============================================
+	// When hovering over an element, display it's toolbar and hide it when we leave
+	$('.page').on('mouseover', '.element', function(){
+		$(this).find('.toolbar').show();
+	}).on('mouseout', '.element', function(){
+		if(!isActiveElement($(this))) // Don't hide the toolbar if this is the currently selected element
+			$(this).find('.toolbar').hide();
+	}).on("contextmenu", ".element", function(e){
 		// Set the Element as Active if it isn't already
 		if(!isActiveElement($(this)))
 		{
@@ -217,85 +256,25 @@ $(document).ready(function() {
 		$("#context-menu").css({'top':y,'left':x});
 		$('#context-menu').show();
 		return false;
-	});
-
-	// ==============================================
-	// SELECTION
-	// ==============================================
-	$(document).click(function(e){
-		var exclude_div = $("#context-menu");
-		if(!exclude_div.is(e.target))  // If target div is not the one you want to exclude then hide it
-			$('#context-menu').hide();
-	});
-
-	// Deselect and clear our SELECTED element
-	$('.page').click(function() {
-		SELECTED = $(); // Empty our SELECTED object, but keep it as a jQuery object
-		activeDeselect();
-		sidebarShowElementData(null);
-	});
-
-	// Make our SELECTED element Active
-	$('.page').on('click', '.element', function(e){
-		changeActive($(this), e);
-	});
-
-	// When typing content, fill the Sidebar Textarea with HTML equivalent
-	$('.page').on('keyup', '.content', function(){
-		$('#element-attr-value').val($(this).html());
-	});
-
-	// Change our SELECTED element and make it active
-	function changeActive(i, e)
-	{
-		SELECTED = i;
-		changeActiveElement(SELECTED);
-		e.stopPropagation();
-	}
-
-	// ==============================================
-	// TOOLBAR/CONTEXT MENU
-	// ==============================================
-	// When hovering over an element, display it's toolbar and hide it when we leave
-	$('.page').on('mouseover', '.element', function(){
-		$(this).find('.toolbar').show();
-	}).on('mouseout', '.element', function(){
-		if(!isActiveElement($(this))) // Don't hide the toolbar if this is the currently selected element
-			$(this).find('.toolbar').hide();
-	});
-
-	// Move the Z-Index of our Element
-	$('.page').on("click", "#move-top", function(){
+	}).on("click", "#move-top", function(){ // Move the Z-Index of our Element
 		var z_index = parseInt(highestZIndex(".element"));
 		SELECTED.css('z-index', z_index + 1);
-	});
-
-	$('.page').on("click", "#move-up", function(){
+	}).on("click", "#move-up", function(){
 		var z_index = parseInt(SELECTED.css('z-index'));
 		SELECTED.css('z-index', z_index + 1);
-	});
-
-	$('.page').on("click", "#move-down", function(){
+	}).on("click", "#move-down", function(){
 		var z_index = parseInt(SELECTED.css('z-index'));
 		SELECTED.css('z-index', z_index - 1);
-	});
-
-	$('.page').on("click", "#move-bottom", function(){
+	}).on("click", "#move-bottom", function(){
 		SELECTED.css('z-index', 0);
-	});
-
-	$('.page').on('click', '.edit' ,function(){
+	}).on('click', '.edit' ,function(){
 		$(this).parents('.element').find('.content').focus();
-	});
-
-	$('.page').on('click', '.remove' ,function(){
+	}).on('click', '.remove' ,function(){
 		$(this).parents('.element').remove();
 		activeDeselect();
 		sidebarShowElementData(null);
 		e.stopPropagation();
-	});
-
-	$('.page').on('click', '.copy' ,function(){
+	}).on('click', '.copy' ,function(){
 
 		var orig_element = $(this).parents('.element');
 		var new_element = orig_element.clone();
