@@ -14,35 +14,41 @@ var DATA = {
 
 // Our Entities object which contains properties
 var ENTITY = {
-	property: [],
+	property: [{name:'id', header:false}, {name:'order', header:false}, {name:'name', header:true}],
 	getLength: function() {
-		return this.property.length
+		return this.property.length;
 	},
-	getInfo: function(level) {
-		return this.property[level];
+	getSubInfo: function(level, index) {
+		return this.property[level][index];
 	},
-	addProperty: function(property_name) {
-		this.property.push(property_name);
+	addProperty: function(property_name, header) {
+		this.property.push({name: property_name, header: header});
 	},
 	// Takes either the names property or the index
 	removeProperty: function(p) {
+		var i = p;
 		if(isNaN(p))
-			this.spliceProperty($.inArray(p, this.property));
-		else
-			this.spliceProperty(p);
-	},
-	spliceProperty: function(i) {
+		{
+			for(var j = 0; j < this.getLength(); j++)
+			{
+				if(this.getSubInfo(j, 'name') === p)
+					i = j;
+			}
+		}
 		if(i >= 0)
 			this.property.splice(i, 1);
 	}
 }
 
 $(document).ready(function() {
-	addProperties('name');
-	addProperties('date');
-	addProperties('by');
+	var temp_prop = ['date', 'by'];
 
-	var temp_array = ['Document', '21/02/2014', 'Thomas Wood'];
+	for(var i = 0; i < temp_prop.length; i++)
+	{
+		addProperties(temp_prop[i], true);
+	}
+
+	var temp_array = [1, 1, 'Document', '21/02/2014', 'Thomas Wood'];
 
 	for(var i = 1; i <= 3; i++)
 	{
@@ -50,7 +56,7 @@ $(document).ready(function() {
 		// Loop through and assign our Properties to our Entity
 		for(var j = 0; j < ENTITY.getLength(); j++)
 		{
-			entity[getProperty(j)] = temp_array[j];
+			entity[getProperty(j, "name")] = temp_array[j];
 		}
 		addEntities(entity); // Add the entity to our data object
 	}
@@ -67,15 +73,15 @@ function addEntities(e)
 }
 
 // Add a Property from our Object
-function getProperty(i)
+function getProperty(i, property)
 {
-	return ENTITY.getInfo(i);
+	return ENTITY.getSubInfo(i, property);
 }
 
 // Add a Property to our object
-function addProperties(property)
+function addProperties(property, header)
 {
-	ENTITY.addProperty(property);
+	ENTITY.addProperty(property, header);
 }
 
 // Remove a Property from our object
@@ -89,11 +95,14 @@ function renderEntitiesTable()
 {
 	var table =
 		'<thead>'
-			+ '<tr>'
-			+ '<th>Name</th>'
-			+ '<th>Modified</th>'
-			+ '<th>By</th>'
-			+ '<th>Actions</th>'
+			+ '<tr>';
+			// Loop through all of our properties
+			for(var i = 0; i < ENTITY.getLength(); i++)
+			{
+				if(ENTITY.getSubInfo(i,'header')) // Check if the property is set to be a header
+					table += '<th>' + ENTITY.getSubInfo(i,'name') + '</th>';
+			}
+	table += '<th>Actions</th>'
 			+ '</tr>'
 			+ '</thead>'
 			+ '<tbody>';

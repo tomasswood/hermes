@@ -18,11 +18,16 @@ table#display-table {
   tr {
 	border-bottom: 1px solid $gray-light;
 
+	&:hover {
+	  background-color: $element-active-near-transparent;
+	}
+
 	td, th {
 	  padding: 10px 15px;
 	}
-	&:hover {
-		background-color: $element-active-near-transparent;
+
+	th {
+		text-transform: capitalize;
 	}
 
 	td {
