@@ -11,6 +11,46 @@ th {
   text-align: left;
 }
 
+table#display-table {
+  width: 100%;
+  color: $gray-darker;
+
+  tr {
+	border-bottom: 1px solid $gray-light;
+
+	td, th {
+	  padding: 10px 15px;
+	}
+	&:hover {
+		background-color: $element-active-near-transparent;
+	}
+
+	td {
+
+	  &.display-name {
+		width: 65%;
+
+		&:hover {
+		  text-decoration: underline;
+		  cursor: pointer;
+		}
+	  }
+	  &.display-date {
+		width: 10%;
+		color: $gray;
+	  }
+	  &.display-by {
+		width: 20%;
+	  }
+	  &.display-action {
+		width: 5;
+		text-align: center;
+		cursor: pointer;
+	  }
+	}
+  }
+}
+
 // Baseline styles
 
 .table {
