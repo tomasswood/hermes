@@ -12,4 +12,10 @@ class Home extends MY_Controller {
 		$this->load->view('home');
 		$this->load->view('template/footer', array('displayType' => $display_type));
 	}
+
+	public function get_properties()
+	{
+		$this->load->model('entity_model');
+		return $this->entity_model->load_properties();
+	}
 }

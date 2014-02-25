@@ -1,3 +1,18 @@
+/*
+	DATA
+		| entity
+				| 0
+					| properties...
+*/
+/*
+	ENTITY
+		| property
+					| 0
+						| p_id
+						| p_name
+						| p_header
+ */
+
 // Our Data object which Contains all of our Entities
 var DATA = {
 	entity: [],
@@ -14,15 +29,18 @@ var DATA = {
 
 // Our Entities object which contains properties
 var ENTITY = {
-	property: [{name:'id', header:false}, {name:'order', header:false}, {name:'name', header:true}],
+	property: [],
 	getLength: function() {
 		return this.property.length;
 	},
-	getSubInfo: function(level, index) {
-		return this.property[level][index];
+	getSub: function(level) {
+		return this.property[level];
 	},
-	addProperty: function(property_name, header) {
-		this.property.push({name: property_name, header: header});
+	getSubInfo: function(level, index) {
+		return this.property[level]['cp_' + index];
+	}, // Add a Property to our object
+	addProperty: function(property_id, property_name, header, property_order) {
+		this.property.push({cp_id:property_id, cp_name: property_name, cp_header: header, cp_order:property_order});
 	},
 	// Takes either the names property or the index
 	removeProperty: function(p) {
@@ -40,15 +58,40 @@ var ENTITY = {
 	}
 }
 
+function ajaxFetchProperties() {
+
+	//Send our AJAX request with the query we want to use in the DO file
+	$.ajax({
+		type: "POST",
+		url: "home/get-properties",
+		cache: false,
+		success: function(data) {
+			data = $.parseJSON(data); //The JSON array returned from our AJAX request
+			// Check if we have a valid return
+			if(data.status == 1) {
+				var p = data.content;
+				// Insert each of our Properties into our ENTITY object
+				for(var i = 0; i < p.length; i++)
+				{
+					ENTITY.addProperty(parseInt(p[i]['cp_id']), p[i]['cp_name'], Boolean(p[i]['cp_header']), parseInt(p[i]['cp_order']));
+				}
+				createShit();
+			}
+			else {
+
+			}
+		}
+
+	});
+}
+
 $(document).ready(function() {
-	var temp_prop = ['date', 'by'];
+	ajaxFetchProperties();
+});
 
-	for(var i = 0; i < temp_prop.length; i++)
-	{
-		addProperties(temp_prop[i], true);
-	}
-
-	var temp_array = [1, 1, 'Document', '21/02/2014', 'Thomas Wood'];
+function createShit()
+{
+	var temp_array = ['Document', '21/02/2014', 'Thomas Wood'];
 
 	for(var i = 1; i <= 3; i++)
 	{
@@ -64,7 +107,7 @@ $(document).ready(function() {
 	renderEntitiesTable();
 	console.log(ENTITY);
 	console.log(DATA);
-});
+}
 
 // Add to our Entities object
 function addEntities(e)
@@ -76,12 +119,6 @@ function addEntities(e)
 function getProperty(i, property)
 {
 	return ENTITY.getSubInfo(i, property);
-}
-
-// Add a Property to our object
-function addProperties(property, header)
-{
-	ENTITY.addProperty(property, header);
 }
 
 // Remove a Property from our object

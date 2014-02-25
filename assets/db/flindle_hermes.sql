@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.0.9
+-- version 4.0.4.1
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 02, 2014 at 06:12 AM
--- Server version: 5.6.14
--- PHP Version: 5.5.6
+-- Generation Time: Feb 25, 2014 at 06:34 AM
+-- Server version: 5.6.11
+-- PHP Version: 5.5.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,8 +17,10 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `flindle_pegasus`
+-- Database: `flindle_hermes`
 --
+CREATE DATABASE IF NOT EXISTS `flindle_hermes` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `flindle_hermes`;
 
 -- --------------------------------------------------------
 
@@ -74,303 +76,6 @@ CREATE TABLE IF NOT EXISTS `announcement` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `availability`
---
-
-CREATE TABLE IF NOT EXISTS `availability` (
-  `a_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-  `a_from` datetime NOT NULL,
-  `a_to` datetime NOT NULL,
-  `a_total` tinyint(3) NOT NULL DEFAULT '1',
-  `a_businessid` bigint(20) unsigned NOT NULL,
-  `a_serviceid` bigint(20) DEFAULT NULL,
-  `a_userbusinessid` bigint(20) unsigned DEFAULT NULL,
-  PRIMARY KEY (`a_id`),
-  UNIQUE KEY `a_id` (`a_id`),
-  KEY `a_serviceid` (`a_businessid`),
-  KEY `a_userserviceid` (`a_userbusinessid`),
-  KEY `a_from` (`a_from`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COMMENT='All of the availabilities' AUTO_INCREMENT=199 ;
-
---
--- Dumping data for table `availability`
---
-
-INSERT INTO `availability` (`a_id`, `a_from`, `a_to`, `a_total`, `a_businessid`, `a_serviceid`, `a_userbusinessid`) VALUES
-(1, '2014-01-20 10:00:00', '2014-01-20 11:00:00', 1, 1, NULL, NULL),
-(2, '2014-01-20 11:00:00', '2014-01-20 12:00:00', 1, 1, NULL, NULL),
-(3, '2014-01-20 12:00:00', '2014-01-20 13:00:00', 1, 1, NULL, NULL),
-(4, '2014-01-20 13:00:00', '2014-01-20 14:00:00', 1, 1, NULL, NULL),
-(5, '2014-01-20 14:00:00', '2014-01-20 15:00:00', 1, 1, NULL, NULL),
-(6, '2014-01-20 15:00:00', '2014-01-20 16:00:00', 1, 1, NULL, NULL),
-(7, '2014-01-21 10:00:00', '2014-01-21 11:00:00', 1, 1, NULL, NULL),
-(8, '2014-01-21 11:00:00', '2014-01-21 12:00:00', 1, 1, NULL, NULL),
-(9, '2014-01-21 12:00:00', '2014-01-21 13:00:00', 1, 1, NULL, NULL),
-(10, '2014-01-21 13:00:00', '2014-01-21 14:00:00', 1, 1, NULL, NULL),
-(11, '2014-01-21 14:00:00', '2014-01-21 15:00:00', 1, 1, NULL, NULL),
-(12, '2014-01-21 15:00:00', '2014-01-21 16:00:00', 1, 1, NULL, NULL),
-(13, '2014-01-22 10:00:00', '2014-01-22 11:00:00', 1, 1, NULL, NULL),
-(14, '2014-01-22 11:00:00', '2014-01-22 12:00:00', 1, 1, NULL, NULL),
-(15, '2014-01-22 12:00:00', '2014-01-22 13:00:00', 1, 1, NULL, NULL),
-(16, '2014-01-22 13:00:00', '2014-01-22 14:00:00', 1, 1, NULL, NULL),
-(17, '2014-01-22 14:00:00', '2014-01-22 15:00:00', 1, 1, NULL, NULL),
-(18, '2014-01-22 15:00:00', '2014-01-22 16:00:00', 1, 1, NULL, NULL),
-(19, '2014-01-23 10:00:00', '2014-01-23 11:00:00', 1, 1, NULL, NULL),
-(20, '2014-01-23 11:00:00', '2014-01-23 12:00:00', 1, 1, NULL, NULL),
-(21, '2014-01-23 12:00:00', '2014-01-23 13:00:00', 1, 1, NULL, NULL),
-(22, '2014-01-23 13:00:00', '2014-01-23 14:00:00', 1, 1, NULL, NULL),
-(23, '2014-01-23 14:00:00', '2014-01-23 15:00:00', 1, 1, NULL, NULL),
-(24, '2014-01-23 15:00:00', '2014-01-23 16:00:00', 1, 1, NULL, NULL),
-(25, '2014-01-24 10:00:00', '2014-01-24 11:00:00', 1, 1, NULL, NULL),
-(26, '2014-01-24 11:00:00', '2014-01-24 12:00:00', 1, 1, NULL, NULL),
-(27, '2014-01-24 12:00:00', '2014-01-24 13:00:00', 1, 1, NULL, NULL),
-(28, '2014-01-24 13:00:00', '2014-01-24 14:00:00', 1, 1, NULL, NULL),
-(29, '2014-01-24 14:00:00', '2014-01-24 15:00:00', 1, 1, NULL, NULL),
-(30, '2014-01-24 15:00:00', '2014-01-24 16:00:00', 1, 1, NULL, NULL),
-(31, '2014-02-02 09:00:00', '2014-02-02 10:00:00', 1, 1, NULL, NULL),
-(32, '2014-02-02 10:00:00', '2014-02-02 11:00:00', 1, 1, NULL, NULL),
-(33, '2014-02-02 11:00:00', '2014-02-02 12:00:00', 1, 1, NULL, NULL),
-(34, '2014-02-02 12:00:00', '2014-02-02 13:00:00', 1, 1, NULL, NULL),
-(35, '2014-02-02 13:00:00', '2014-02-02 14:00:00', 1, 1, NULL, NULL),
-(36, '2014-02-02 14:00:00', '2014-02-02 15:00:00', 1, 1, NULL, NULL),
-(37, '2014-02-02 15:00:00', '2014-02-02 16:00:00', 1, 1, NULL, NULL),
-(38, '2014-02-02 16:00:00', '2014-02-02 17:00:00', 1, 1, NULL, NULL),
-(39, '2014-02-03 09:00:00', '2014-02-03 10:00:00', 1, 1, NULL, NULL),
-(40, '2014-02-03 10:00:00', '2014-02-03 11:00:00', 1, 1, NULL, NULL),
-(41, '2014-02-03 11:00:00', '2014-02-03 12:00:00', 1, 1, NULL, NULL),
-(42, '2014-02-03 12:00:00', '2014-02-03 13:00:00', 1, 1, NULL, NULL),
-(43, '2014-02-03 13:00:00', '2014-02-03 14:00:00', 1, 1, NULL, NULL),
-(44, '2014-02-03 14:00:00', '2014-02-03 15:00:00', 1, 1, NULL, NULL),
-(45, '2014-02-03 15:00:00', '2014-02-03 16:00:00', 1, 1, NULL, NULL),
-(46, '2014-02-03 16:00:00', '2014-02-03 17:00:00', 1, 1, NULL, NULL),
-(47, '2014-02-04 09:00:00', '2014-02-04 10:00:00', 1, 1, NULL, NULL),
-(48, '2014-02-04 10:00:00', '2014-02-04 11:00:00', 1, 1, NULL, NULL),
-(49, '2014-02-04 11:00:00', '2014-02-04 12:00:00', 1, 1, NULL, NULL),
-(50, '2014-02-04 12:00:00', '2014-02-04 13:00:00', 1, 1, NULL, NULL),
-(51, '2014-02-04 13:00:00', '2014-02-04 14:00:00', 1, 1, NULL, NULL),
-(52, '2014-02-04 14:00:00', '2014-02-04 15:00:00', 1, 1, NULL, NULL),
-(53, '2014-02-04 15:00:00', '2014-02-04 16:00:00', 1, 1, NULL, NULL),
-(54, '2014-02-04 16:00:00', '2014-02-04 17:00:00', 1, 1, NULL, NULL),
-(55, '2014-02-05 09:00:00', '2014-02-05 10:00:00', 1, 1, NULL, NULL),
-(56, '2014-02-05 10:00:00', '2014-02-05 11:00:00', 1, 1, NULL, NULL),
-(57, '2014-02-05 11:00:00', '2014-02-05 12:00:00', 1, 1, NULL, NULL),
-(58, '2014-02-05 12:00:00', '2014-02-05 13:00:00', 1, 1, NULL, NULL),
-(59, '2014-02-05 13:00:00', '2014-02-05 14:00:00', 1, 1, NULL, NULL),
-(60, '2014-02-05 14:00:00', '2014-02-05 15:00:00', 1, 1, NULL, NULL),
-(61, '2014-02-05 15:00:00', '2014-02-05 16:00:00', 1, 1, NULL, NULL),
-(62, '2014-02-05 16:00:00', '2014-02-05 17:00:00', 1, 1, NULL, NULL),
-(63, '2014-02-06 09:00:00', '2014-02-06 10:00:00', 1, 1, NULL, NULL),
-(64, '2014-02-06 10:00:00', '2014-02-06 11:00:00', 1, 1, NULL, NULL),
-(65, '2014-02-06 11:00:00', '2014-02-06 12:00:00', 1, 1, NULL, NULL),
-(66, '2014-02-06 12:00:00', '2014-02-06 13:00:00', 1, 1, NULL, NULL),
-(67, '2014-02-06 13:00:00', '2014-02-06 14:00:00', 1, 1, NULL, NULL),
-(68, '2014-02-06 14:00:00', '2014-02-06 15:00:00', 1, 1, NULL, NULL),
-(69, '2014-02-06 15:00:00', '2014-02-06 16:00:00', 1, 1, NULL, NULL),
-(70, '2014-02-06 16:00:00', '2014-02-06 17:00:00', 1, 1, NULL, NULL),
-(71, '2014-02-07 09:00:00', '2014-02-07 10:00:00', 1, 1, NULL, NULL),
-(72, '2014-02-07 10:00:00', '2014-02-07 11:00:00', 1, 1, NULL, NULL),
-(73, '2014-02-07 11:00:00', '2014-02-07 12:00:00', 1, 1, NULL, NULL),
-(74, '2014-02-07 12:00:00', '2014-02-07 13:00:00', 1, 1, NULL, NULL),
-(75, '2014-02-07 13:00:00', '2014-02-07 14:00:00', 1, 1, NULL, NULL),
-(76, '2014-02-07 14:00:00', '2014-02-07 15:00:00', 1, 1, NULL, NULL),
-(77, '2014-02-07 15:00:00', '2014-02-07 16:00:00', 1, 1, NULL, NULL),
-(78, '2014-02-07 16:00:00', '2014-02-07 17:00:00', 1, 1, NULL, NULL),
-(79, '2014-02-08 09:00:00', '2014-02-08 10:00:00', 1, 1, NULL, NULL),
-(80, '2014-02-08 10:00:00', '2014-02-08 11:00:00', 1, 1, NULL, NULL),
-(81, '2014-02-08 11:00:00', '2014-02-08 12:00:00', 1, 1, NULL, NULL),
-(82, '2014-02-08 12:00:00', '2014-02-08 13:00:00', 1, 1, NULL, NULL),
-(83, '2014-02-08 13:00:00', '2014-02-08 14:00:00', 1, 1, NULL, NULL),
-(84, '2014-02-08 14:00:00', '2014-02-08 15:00:00', 1, 1, NULL, NULL),
-(85, '2014-02-08 15:00:00', '2014-02-08 16:00:00', 1, 1, NULL, NULL),
-(86, '2014-02-08 16:00:00', '2014-02-08 17:00:00', 1, 1, NULL, NULL),
-(87, '2014-02-09 09:00:00', '2014-02-09 10:00:00', 1, 1, NULL, NULL),
-(88, '2014-02-09 10:00:00', '2014-02-09 11:00:00', 1, 1, NULL, NULL),
-(89, '2014-02-09 11:00:00', '2014-02-09 12:00:00', 1, 1, NULL, NULL),
-(90, '2014-02-09 12:00:00', '2014-02-09 13:00:00', 1, 1, NULL, NULL),
-(91, '2014-02-09 13:00:00', '2014-02-09 14:00:00', 1, 1, NULL, NULL),
-(92, '2014-02-09 14:00:00', '2014-02-09 15:00:00', 1, 1, NULL, NULL),
-(93, '2014-02-09 15:00:00', '2014-02-09 16:00:00', 1, 1, NULL, NULL),
-(94, '2014-02-09 16:00:00', '2014-02-09 17:00:00', 1, 1, NULL, NULL),
-(95, '2014-02-10 09:00:00', '2014-02-10 10:00:00', 1, 1, NULL, NULL),
-(96, '2014-02-10 10:00:00', '2014-02-10 11:00:00', 1, 1, NULL, NULL),
-(97, '2014-02-10 11:00:00', '2014-02-10 12:00:00', 1, 1, NULL, NULL),
-(98, '2014-02-10 12:00:00', '2014-02-10 13:00:00', 1, 1, NULL, NULL),
-(99, '2014-02-10 13:00:00', '2014-02-10 14:00:00', 1, 1, NULL, NULL),
-(100, '2014-02-10 14:00:00', '2014-02-10 15:00:00', 1, 1, NULL, NULL),
-(101, '2014-02-10 15:00:00', '2014-02-10 16:00:00', 1, 1, NULL, NULL),
-(102, '2014-02-10 16:00:00', '2014-02-10 17:00:00', 1, 1, NULL, NULL),
-(103, '2014-02-11 09:00:00', '2014-02-11 10:00:00', 1, 1, NULL, NULL),
-(104, '2014-02-11 10:00:00', '2014-02-11 11:00:00', 1, 1, NULL, NULL),
-(105, '2014-02-11 11:00:00', '2014-02-11 12:00:00', 1, 1, NULL, NULL),
-(106, '2014-02-11 12:00:00', '2014-02-11 13:00:00', 1, 1, NULL, NULL),
-(107, '2014-02-11 13:00:00', '2014-02-11 14:00:00', 1, 1, NULL, NULL),
-(108, '2014-02-11 14:00:00', '2014-02-11 15:00:00', 1, 1, NULL, NULL),
-(109, '2014-02-11 15:00:00', '2014-02-11 16:00:00', 1, 1, NULL, NULL),
-(110, '2014-02-11 16:00:00', '2014-02-11 17:00:00', 1, 1, NULL, NULL),
-(111, '2014-02-12 09:00:00', '2014-02-12 10:00:00', 1, 1, NULL, NULL),
-(112, '2014-02-12 10:00:00', '2014-02-12 11:00:00', 1, 1, NULL, NULL),
-(113, '2014-02-12 11:00:00', '2014-02-12 12:00:00', 1, 1, NULL, NULL),
-(114, '2014-02-12 12:00:00', '2014-02-12 13:00:00', 1, 1, NULL, NULL),
-(115, '2014-02-12 13:00:00', '2014-02-12 14:00:00', 1, 1, NULL, NULL),
-(116, '2014-02-12 14:00:00', '2014-02-12 15:00:00', 1, 1, NULL, NULL),
-(117, '2014-02-12 15:00:00', '2014-02-12 16:00:00', 1, 1, NULL, NULL),
-(118, '2014-02-12 16:00:00', '2014-02-12 17:00:00', 1, 1, NULL, NULL),
-(119, '2014-02-13 09:00:00', '2014-02-13 10:00:00', 1, 1, NULL, NULL),
-(120, '2014-02-13 10:00:00', '2014-02-13 11:00:00', 1, 1, NULL, NULL),
-(121, '2014-02-13 11:00:00', '2014-02-13 12:00:00', 1, 1, NULL, NULL),
-(122, '2014-02-13 12:00:00', '2014-02-13 13:00:00', 1, 1, NULL, NULL),
-(123, '2014-02-13 13:00:00', '2014-02-13 14:00:00', 1, 1, NULL, NULL),
-(124, '2014-02-13 14:00:00', '2014-02-13 15:00:00', 1, 1, NULL, NULL),
-(125, '2014-02-13 15:00:00', '2014-02-13 16:00:00', 1, 1, NULL, NULL),
-(126, '2014-02-13 16:00:00', '2014-02-13 17:00:00', 1, 1, NULL, NULL),
-(127, '2014-02-14 09:00:00', '2014-02-14 10:00:00', 1, 1, NULL, NULL),
-(128, '2014-02-14 10:00:00', '2014-02-14 11:00:00', 1, 1, NULL, NULL),
-(129, '2014-02-14 11:00:00', '2014-02-14 12:00:00', 1, 1, NULL, NULL),
-(130, '2014-02-14 12:00:00', '2014-02-14 13:00:00', 1, 1, NULL, NULL),
-(131, '2014-02-14 13:00:00', '2014-02-14 14:00:00', 1, 1, NULL, NULL),
-(132, '2014-02-14 14:00:00', '2014-02-14 15:00:00', 1, 1, NULL, NULL),
-(133, '2014-02-14 15:00:00', '2014-02-14 16:00:00', 1, 1, NULL, NULL),
-(134, '2014-02-14 16:00:00', '2014-02-14 17:00:00', 1, 1, NULL, NULL),
-(135, '2014-02-15 09:00:00', '2014-02-15 10:00:00', 1, 1, NULL, NULL),
-(136, '2014-02-15 10:00:00', '2014-02-15 11:00:00', 1, 1, NULL, NULL),
-(137, '2014-02-15 11:00:00', '2014-02-15 12:00:00', 1, 1, NULL, NULL),
-(138, '2014-02-15 12:00:00', '2014-02-15 13:00:00', 1, 1, NULL, NULL),
-(139, '2014-02-15 13:00:00', '2014-02-15 14:00:00', 1, 1, NULL, NULL),
-(140, '2014-02-15 14:00:00', '2014-02-15 15:00:00', 1, 1, NULL, NULL),
-(141, '2014-02-15 15:00:00', '2014-02-15 16:00:00', 1, 1, NULL, NULL),
-(142, '2014-02-15 16:00:00', '2014-02-15 17:00:00', 1, 1, NULL, NULL),
-(143, '2014-02-16 09:00:00', '2014-02-16 10:00:00', 1, 1, NULL, NULL),
-(144, '2014-02-16 10:00:00', '2014-02-16 11:00:00', 1, 1, NULL, NULL),
-(145, '2014-02-16 11:00:00', '2014-02-16 12:00:00', 1, 1, NULL, NULL),
-(146, '2014-02-16 12:00:00', '2014-02-16 13:00:00', 1, 1, NULL, NULL),
-(147, '2014-02-16 13:00:00', '2014-02-16 14:00:00', 1, 1, NULL, NULL),
-(148, '2014-02-16 14:00:00', '2014-02-16 15:00:00', 1, 1, NULL, NULL),
-(149, '2014-02-16 15:00:00', '2014-02-16 16:00:00', 1, 1, NULL, NULL),
-(150, '2014-02-16 16:00:00', '2014-02-16 17:00:00', 1, 1, NULL, NULL),
-(151, '2014-02-17 09:00:00', '2014-02-17 10:00:00', 1, 1, NULL, NULL),
-(152, '2014-02-17 10:00:00', '2014-02-17 11:00:00', 1, 1, NULL, NULL),
-(153, '2014-02-17 11:00:00', '2014-02-17 12:00:00', 1, 1, NULL, NULL),
-(154, '2014-02-17 12:00:00', '2014-02-17 13:00:00', 1, 1, NULL, NULL),
-(155, '2014-02-17 13:00:00', '2014-02-17 14:00:00', 1, 1, NULL, NULL),
-(156, '2014-02-17 14:00:00', '2014-02-17 15:00:00', 1, 1, NULL, NULL),
-(157, '2014-02-17 15:00:00', '2014-02-17 16:00:00', 1, 1, NULL, NULL),
-(158, '2014-02-17 16:00:00', '2014-02-17 17:00:00', 1, 1, NULL, NULL),
-(159, '2014-02-18 09:00:00', '2014-02-18 10:00:00', 1, 1, NULL, NULL),
-(160, '2014-02-18 10:00:00', '2014-02-18 11:00:00', 1, 1, NULL, NULL),
-(161, '2014-02-18 11:00:00', '2014-02-18 12:00:00', 1, 1, NULL, NULL),
-(162, '2014-02-18 12:00:00', '2014-02-18 13:00:00', 1, 1, NULL, NULL),
-(163, '2014-02-18 13:00:00', '2014-02-18 14:00:00', 1, 1, NULL, NULL),
-(164, '2014-02-18 14:00:00', '2014-02-18 15:00:00', 1, 1, NULL, NULL),
-(165, '2014-02-18 15:00:00', '2014-02-18 16:00:00', 1, 1, NULL, NULL),
-(166, '2014-02-18 16:00:00', '2014-02-18 17:00:00', 1, 1, NULL, NULL),
-(167, '2014-02-19 09:00:00', '2014-02-19 10:00:00', 1, 1, NULL, NULL),
-(168, '2014-02-19 10:00:00', '2014-02-19 11:00:00', 1, 1, NULL, NULL),
-(169, '2014-02-19 11:00:00', '2014-02-19 12:00:00', 1, 1, NULL, NULL),
-(170, '2014-02-19 12:00:00', '2014-02-19 13:00:00', 1, 1, NULL, NULL),
-(171, '2014-02-19 13:00:00', '2014-02-19 14:00:00', 1, 1, NULL, NULL),
-(172, '2014-02-19 14:00:00', '2014-02-19 15:00:00', 1, 1, NULL, NULL),
-(173, '2014-02-19 15:00:00', '2014-02-19 16:00:00', 1, 1, NULL, NULL),
-(174, '2014-02-19 16:00:00', '2014-02-19 17:00:00', 1, 1, NULL, NULL),
-(175, '2014-02-20 09:00:00', '2014-02-20 10:00:00', 1, 1, NULL, NULL),
-(176, '2014-02-20 10:00:00', '2014-02-20 11:00:00', 1, 1, NULL, NULL),
-(177, '2014-02-20 11:00:00', '2014-02-20 12:00:00', 1, 1, NULL, NULL),
-(178, '2014-02-20 12:00:00', '2014-02-20 13:00:00', 1, 1, NULL, NULL),
-(179, '2014-02-20 13:00:00', '2014-02-20 14:00:00', 1, 1, NULL, NULL),
-(180, '2014-02-20 14:00:00', '2014-02-20 15:00:00', 1, 1, NULL, NULL),
-(181, '2014-02-20 15:00:00', '2014-02-20 16:00:00', 1, 1, NULL, NULL),
-(182, '2014-02-20 16:00:00', '2014-02-20 17:00:00', 1, 1, NULL, NULL),
-(183, '2014-02-21 09:00:00', '2014-02-21 10:00:00', 1, 1, NULL, NULL),
-(184, '2014-02-21 10:00:00', '2014-02-21 11:00:00', 1, 1, NULL, NULL),
-(185, '2014-02-21 11:00:00', '2014-02-21 12:00:00', 1, 1, NULL, NULL),
-(186, '2014-02-21 12:00:00', '2014-02-21 13:00:00', 1, 1, NULL, NULL),
-(187, '2014-02-21 13:00:00', '2014-02-21 14:00:00', 1, 1, NULL, NULL),
-(188, '2014-02-21 14:00:00', '2014-02-21 15:00:00', 1, 1, NULL, NULL),
-(189, '2014-02-21 15:00:00', '2014-02-21 16:00:00', 1, 1, NULL, NULL),
-(190, '2014-02-21 16:00:00', '2014-02-21 17:00:00', 1, 1, NULL, NULL),
-(191, '2014-02-22 09:00:00', '2014-02-22 10:00:00', 1, 1, NULL, NULL),
-(192, '2014-02-22 10:00:00', '2014-02-22 11:00:00', 1, 1, NULL, NULL),
-(193, '2014-02-22 11:00:00', '2014-02-22 12:00:00', 1, 1, NULL, NULL),
-(194, '2014-02-22 12:00:00', '2014-02-22 13:00:00', 1, 1, NULL, NULL),
-(195, '2014-02-22 13:00:00', '2014-02-22 14:00:00', 1, 1, NULL, NULL),
-(196, '2014-02-22 14:00:00', '2014-02-22 15:00:00', 1, 1, NULL, NULL),
-(197, '2014-02-22 15:00:00', '2014-02-22 16:00:00', 1, 1, NULL, NULL),
-(198, '2014-02-22 16:00:00', '2014-02-22 17:00:00', 1, 1, NULL, NULL);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `booking`
---
-
-CREATE TABLE IF NOT EXISTS `booking` (
-  `b_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-  `b_date` date NOT NULL,
-  `b_total` tinyint(3) NOT NULL DEFAULT '1',
-  `b_ref` varchar(10) NOT NULL,
-  `b_updated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `b_firstname` varchar(150) NOT NULL,
-  `b_lastname` varchar(150) DEFAULT NULL,
-  `b_email` varchar(50) NOT NULL,
-  `b_approved` tinyint(1) DEFAULT '1',
-  `b_cancelled` tinyint(1) NOT NULL DEFAULT '0',
-  `b_token` varchar(20) NOT NULL,
-  `b_comment` text,
-  `b_availabilityid` bigint(20) unsigned NOT NULL,
-  `b_serviceid` bigint(20) unsigned DEFAULT NULL,
-  `b_bookingstageid` bigint(20) DEFAULT NULL,
-  `b_userid` bigint(20) unsigned DEFAULT NULL,
-  `b_businessid` bigint(20) unsigned NOT NULL,
-  PRIMARY KEY (`b_id`),
-  UNIQUE KEY `b_id` (`b_id`),
-  UNIQUE KEY `b_token` (`b_token`),
-  KEY `b_userid` (`b_userid`),
-  KEY `b_availabilitiesid` (`b_availabilityid`),
-  KEY `b_ref` (`b_ref`),
-  KEY `b_name` (`b_firstname`),
-  KEY `b_serviceid` (`b_businessid`),
-  KEY `b_approved` (`b_approved`),
-  KEY `b_cancelled` (`b_cancelled`),
-  KEY `b_choiceid` (`b_serviceid`),
-  KEY `b_bookingstageid` (`b_bookingstageid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COMMENT='All of the bookings placed' AUTO_INCREMENT=4 ;
-
---
--- Dumping data for table `booking`
---
-
-INSERT INTO `booking` (`b_id`, `b_date`, `b_total`, `b_ref`, `b_updated`, `b_firstname`, `b_lastname`, `b_email`, `b_approved`, `b_cancelled`, `b_token`, `b_comment`, `b_availabilityid`, `b_serviceid`, `b_bookingstageid`, `b_userid`, `b_businessid`) VALUES
-(1, '2014-01-22', 1, 'AE490', '2014-01-22 04:11:14', 'Tom', 'Hanlon', 'tomasswood@hotmail.com', 1, 0, '4717c244331eb475a42e', 'Hello Comment', 13, 0, NULL, 2, 1),
-(2, '2014-01-23', 1, 'C619D', '2014-01-23 02:57:35', 'Tom', 'Hanlon', 'tomasswood@hotmail.com', 1, 0, '5e33df39aef5d2e4762b', 'My comments mate', 21, 0, NULL, 2, 1),
-(3, '2014-02-02', 1, '6FBCC', '2014-02-02 05:08:35', 'Tom', 'Hanlon', 'tomasswood@hotmail.com', 1, 0, 'b5a1d925221b37e2e399', 'sdfgsdfghgf', 38, 0, NULL, 2, 1);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `bookingstage`
---
-
-CREATE TABLE IF NOT EXISTS `bookingstage` (
-  `bs_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-  `bs_name` varchar(50) NOT NULL,
-  `bs_order` tinyint(3) NOT NULL,
-  `bs_businessid` bigint(20) NOT NULL,
-  UNIQUE KEY `bs_id` (`bs_id`),
-  KEY `bs_businessid` (`bs_businessid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
-
---
--- Dumping data for table `bookingstage`
---
-
-INSERT INTO `bookingstage` (`bs_id`, `bs_name`, `bs_order`, `bs_businessid`) VALUES
-(2, 'Item 2222', 2, 1),
-(3, 'Item 3', 3, 1),
-(4, 'Item 4444', 1, 1),
-(5, 'New Stage 5', 4, 1);
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `business`
 --
 
@@ -395,6 +100,7 @@ CREATE TABLE IF NOT EXISTS `business` (
   `bu_concurrent_seats` smallint(4) DEFAULT NULL,
   `bu_concurrent_seats_enable` bit(1) NOT NULL DEFAULT b'0',
   `bu_specify_choice_enable` tinyint(1) NOT NULL DEFAULT '0',
+  `bu_specify_staffchoice_enable` bit(1) NOT NULL DEFAULT b'0',
   `bu_approve_enable` bit(1) NOT NULL DEFAULT b'0',
   `bu_lockout_enable` bit(1) NOT NULL DEFAULT b'0',
   `bu_stage_enable` bit(1) NOT NULL DEFAULT b'0',
@@ -416,18 +122,18 @@ CREATE TABLE IF NOT EXISTS `business` (
 -- Dumping data for table `business`
 --
 
-INSERT INTO `business` (`bu_id`, `bu_name`, `bu_alias`, `bu_description`, `bu_type`, `bu_email`, `bu_phone`, `bu_address`, `bu_interval`, `bu_default_availability`, `bu_time_opening`, `bu_time_closing`, `bu_max_attendees`, `bu_max_msg`, `bu_max_msg_enable`, `bu_booking_expiry`, `bu_booking_expiry_enable`, `bu_concurrent_seats`, `bu_concurrent_seats_enable`, `bu_specify_choice_enable`, `bu_approve_enable`, `bu_lockout_enable`, `bu_stage_enable`, `bu_status`, `bu_expire`, `bu_businesslogoid`, `bu_cardlinkid`, `bu_alertid`) VALUES
-(1, 'Tom''s Thai', 'tomsthai', 'Best Thai Food Anywhere!', 'Restaurant', 'thomas.wood@flindle.com', '', 'THE VALE', 60, 1, '09:00:00', '17:00:00', 10, '', b'0', 0, b'1', 20, b'0', 0, b'0', b'0', b'1', 'Trial', '2014-02-08 11:00:00', 13, 3, 1),
-(2, 'Harry''s Haircuts', 'harryscuts', 'Cheapest Cut & Colour.', 'Salon', NULL, NULL, NULL, 60, 0, '09:00:00', '17:00:00', 10, 'If you would like to make a booking for this many people, please call us so that we can best accommodate your group. Call us on: [Phone Number Here]. ', b'1', 0, b'0', 10, b'0', 1, b'1', b'0', b'0', 'Active', '0000-00-00 00:00:00', 5, NULL, 2),
-(3, 'Chesty trimmers', 'chestytrimmers', 'The smoothest chests in town, get a fine trim here!', 'Salon', NULL, NULL, NULL, 60, 0, '09:00:00', '17:00:00', 10, 'If you would like to make a booking for this many people, please call us so that we can best accommodate your group. Call us on: [Phone Number Here].', b'1', 0, b'0', 10, b'0', 0, b'0', b'0', b'0', 'Active', '0000-00-00 00:00:00', 7, NULL, 3),
-(4, 'Wilsons', 'Wils', 'Tennis Coaching', 'Other', NULL, NULL, NULL, 60, 0, '08:00:00', '14:00:00', 2, 'Sorry, we’re all full at the moment. Don’t give up, you can still be a tennis master! ', b'1', 0, b'0', 0, b'0', 1, b'0', b'0', b'0', 'Active', '0000-00-00 00:00:00', 2, NULL, 5),
-(5, 'Bob''s Bananas', 'bobsbananas', 'Bananas from Bob', 'Other', NULL, NULL, NULL, 60, 0, '09:00:00', '17:00:00', 1, '', b'1', 0, b'0', 0, b'0', 0, b'0', b'0', b'0', 'Active', '0000-00-00 00:00:00', 11, NULL, 6),
-(6, 'Cheese Factory', 'cheese', 'The Cheese Factory', 'Restaurant', NULL, NULL, NULL, 60, 0, NULL, NULL, NULL, NULL, b'0', NULL, b'0', NULL, b'0', 0, b'0', b'0', b'0', 'Active', '0000-00-00 00:00:00', 4, NULL, NULL),
-(7, 'BigFlinLittleDel', 'bfld', 'Top Secret.', 'Restaurant', NULL, NULL, NULL, 60, 0, '09:00:00', '17:00:00', 10, '', b'1', 0, b'0', 20, b'1', 0, b'0', b'0', b'0', 'Active', '0000-00-00 00:00:00', 1, NULL, 7),
-(11, 'Wheeler''s Wheels', 'ww', 'Wheels Mate', 'Restaurant', 'wheeler.69@hotmail.com', '419092055', '40 THE VALE MATE', 60, 0, '09:00:00', '17:00:00', 0, '', b'0', 0, b'0', 0, b'0', 0, b'0', b'0', b'0', 'Active', '0000-00-00 00:00:00', 1, 5, 8),
-(12, 'Ma biz', 'dg', 'sg', 'Restaurant', '', '', '', 60, 0, '09:00:00', '17:00:00', 0, '', b'0', 0, b'0', 0, b'0', 0, b'0', b'1', b'0', 'Active', '0000-00-00 00:00:00', 1, 6, 9),
-(17, 'foodelke', 'foodelke', 'Food for Elke', 'Restaurant', 'foodelke@food.com', NULL, NULL, 60, 0, '09:00:00', '17:00:00', NULL, NULL, b'0', NULL, b'0', NULL, b'0', 0, b'0', b'0', b'0', 'Trial', '2014-03-01 17:16:01', 1, 17, NULL),
-(18, 'Hello', 'hello', NULL, 'Beautician', 'tomasswood@hotmail.com', NULL, NULL, 60, 0, '09:00:00', '17:00:00', NULL, NULL, b'0', NULL, b'0', NULL, b'0', 0, b'0', b'0', b'0', 'Trial', '2014-03-02 16:03:21', 1, 19, NULL);
+INSERT INTO `business` (`bu_id`, `bu_name`, `bu_alias`, `bu_description`, `bu_type`, `bu_email`, `bu_phone`, `bu_address`, `bu_interval`, `bu_default_availability`, `bu_time_opening`, `bu_time_closing`, `bu_max_attendees`, `bu_max_msg`, `bu_max_msg_enable`, `bu_booking_expiry`, `bu_booking_expiry_enable`, `bu_concurrent_seats`, `bu_concurrent_seats_enable`, `bu_specify_choice_enable`, `bu_specify_staffchoice_enable`, `bu_approve_enable`, `bu_lockout_enable`, `bu_stage_enable`, `bu_status`, `bu_expire`, `bu_businesslogoid`, `bu_cardlinkid`, `bu_alertid`) VALUES
+(1, 'Tom''s Thai', 'tomsthai', 'Best Thai Food Anywhere!', 'Restaurant', 'thomas.wood@flindle.com', '', 'THE VALE', 60, 1, '09:00:00', '17:00:00', 10, '', b'0', 0, b'1', 20, b'0', 0, b'0', b'0', b'0', b'1', 'Trial', '2014-02-08 11:00:00', 13, 3, 1),
+(2, 'Harry''s Haircuts', 'harryscuts', 'Cheapest Cut & Colour.', 'Salon', '', '', '', 60, 10, '09:00:00', '17:00:00', 10, 'If you would like to make a booking for this many people, please call us so that we can best accommodate your group. Call us on: [Phone Number Here]. ', b'1', 0, b'0', 10, b'0', 1, b'1', b'1', b'0', b'0', 'Active', '0000-00-00 00:00:00', 5, NULL, 2),
+(3, 'Chesty trimmers', 'chestytrimmers', 'The smoothest chests in town, get a fine trim here!', 'Salon', NULL, NULL, NULL, 60, 0, '09:00:00', '17:00:00', 10, 'If you would like to make a booking for this many people, please call us so that we can best accommodate your group. Call us on: [Phone Number Here].', b'1', 0, b'0', 10, b'0', 0, b'0', b'0', b'0', b'0', 'Active', '0000-00-00 00:00:00', 7, NULL, 3),
+(4, 'Wilsons', 'Wils', 'Tennis Coaching', 'Other', NULL, NULL, NULL, 60, 0, '08:00:00', '14:00:00', 2, 'Sorry, we’re all full at the moment. Don’t give up, you can still be a tennis master! ', b'1', 0, b'0', 0, b'0', 1, b'0', b'0', b'0', b'0', 'Active', '0000-00-00 00:00:00', 2, NULL, 5),
+(5, 'Bob''s Bananas', 'bobsbananas', 'Bananas from Bob', 'Other', NULL, NULL, NULL, 60, 0, '09:00:00', '17:00:00', 1, '', b'1', 0, b'0', 0, b'0', 0, b'0', b'0', b'0', b'0', 'Active', '0000-00-00 00:00:00', 11, NULL, 6),
+(6, 'Cheese Factory', 'cheese', 'The Cheese Factory', 'Restaurant', NULL, NULL, NULL, 60, 0, NULL, NULL, NULL, NULL, b'0', NULL, b'0', NULL, b'0', 0, b'0', b'0', b'0', b'0', 'Active', '0000-00-00 00:00:00', 4, NULL, NULL),
+(7, 'BigFlinLittleDel', 'bfld', 'Top Secret.', 'Restaurant', NULL, NULL, NULL, 60, 0, '09:00:00', '17:00:00', 10, '', b'1', 0, b'0', 20, b'1', 0, b'0', b'0', b'0', b'0', 'Active', '0000-00-00 00:00:00', 1, NULL, 7),
+(11, 'Wheeler''s Wheels', 'ww', 'Wheels Mate', 'Restaurant', 'wheeler.69@hotmail.com', '419092055', '40 THE VALE MATE', 60, 0, '09:00:00', '17:00:00', 0, '', b'0', 0, b'0', 0, b'0', 0, b'0', b'0', b'0', b'0', 'Active', '0000-00-00 00:00:00', 1, 5, 8),
+(12, 'Ma biz', 'dg', 'sg', 'Restaurant', '', '', '', 60, 0, '09:00:00', '17:00:00', 0, '', b'0', 0, b'0', 0, b'0', 0, b'0', b'0', b'1', b'0', 'Active', '0000-00-00 00:00:00', 1, 6, 9),
+(17, 'foodelke', 'foodelke', 'Food for Elke', 'Restaurant', 'foodelke@food.com', NULL, NULL, 60, 0, '09:00:00', '17:00:00', NULL, NULL, b'0', NULL, b'0', NULL, b'0', 0, b'0', b'0', b'0', b'0', 'Trial', '2014-03-01 17:16:01', 1, 17, NULL),
+(18, 'Hello', 'hello', NULL, 'Beautician', 'tomasswood@hotmail.com', NULL, NULL, 60, 0, '09:00:00', '17:00:00', NULL, NULL, b'0', NULL, b'0', NULL, b'0', 0, b'0', b'0', b'0', b'0', 'Trial', '2014-03-02 16:03:21', 1, 19, NULL);
 
 -- --------------------------------------------------------
 
@@ -4514,53 +4220,50 @@ INSERT INTO `calendar_table` (`dt`, `y`, `q`, `m`, `d`, `dw`, `monthName`, `dayN
 -- --------------------------------------------------------
 
 --
--- Table structure for table `dashboard`
+-- Table structure for table `customproperty`
 --
 
-CREATE TABLE IF NOT EXISTS `dashboard` (
-  `d_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-  `d_layout` text,
-  `d_userbusinessid` bigint(20) unsigned NOT NULL,
-  PRIMARY KEY (`d_id`),
-  UNIQUE KEY `d_id` (`d_id`),
-  UNIQUE KEY `d_userserviceid_2` (`d_userbusinessid`),
-  KEY `d_userserviceid` (`d_userbusinessid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+CREATE TABLE IF NOT EXISTS `customproperty` (
+  `cp_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `cp_name` varchar(50) NOT NULL,
+  `cp_header` bit(1) NOT NULL DEFAULT b'0',
+  `cp_order` tinyint(3) NOT NULL,
+  UNIQUE KEY `cp_id` (`cp_id`),
+  KEY `cp_order` (`cp_order`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
--- Dumping data for table `dashboard`
+-- Dumping data for table `customproperty`
 --
 
-INSERT INTO `dashboard` (`d_id`, `d_layout`, `d_userbusinessid`) VALUES
-(1, '"[{\\"order\\":3,\\"colour\\":\\"blue\\",\\"message\\":\\"Bookings this Month\\",\\"col\\":3,\\"row\\":1},{\\"order\\":1,\\"colour\\":\\"red\\",\\"message\\":\\"Bookings Today\\",\\"col\\":1,\\"row\\":1},{\\"order\\":6,\\"colour\\":\\"green\\",\\"message\\":\\"Availabilities this Week\\",\\"col\\":2,\\"row\\":2},{\\"order\\":2,\\"colour\\":\\"green\\",\\"message\\":\\"Bookings this Week\\",\\"col\\":2,\\"row\\":1},{\\"order\\":4,\\"colour\\":\\"yellow\\",\\"message\\":\\"Avg Bookings Per Day\\",\\"col\\":4,\\"row\\":1},{\\"order\\":5,\\"colour\\":\\"red\\",\\"message\\":\\"Availabilities Today\\",\\"col\\":1,\\"row\\":2},{\\"order\\":8,\\"colour\\":\\"yellow\\",\\"message\\":\\"% of Bookings Made\\",\\"col\\":4,\\"row\\":2},{\\"order\\":7,\\"colour\\":\\"blue\\",\\"message\\":\\"Availabilities this Month\\",\\"col\\":3,\\"row\\":2}]"', 2);
+INSERT INTO `customproperty` (`cp_id`, `cp_name`, `cp_header`, `cp_order`) VALUES
+(1, 'name', b'1', 1),
+(2, 'date', b'1', 2),
+(3, 'by', b'1', 3);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `service`
+-- Table structure for table `customvalue`
 --
 
-CREATE TABLE IF NOT EXISTS `service` (
-  `s_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-  `s_title` varchar(100) NOT NULL,
-  `s_length` smallint(4) NOT NULL DEFAULT '0',
-  `s_price` decimal(10,2) DEFAULT NULL,
-  `s_description` varchar(255) DEFAULT NULL,
-  `s_businessid` bigint(20) unsigned NOT NULL,
-  PRIMARY KEY (`s_id`),
-  UNIQUE KEY `c_id` (`s_id`),
-  KEY `c_serviceid` (`s_businessid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COMMENT='The types of a services a Staff or Business can offer' AUTO_INCREMENT=8 ;
+CREATE TABLE IF NOT EXISTS `customvalue` (
+  `cv_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `cv_value` varchar(255) NOT NULL,
+  `cv_link` varchar(255) NOT NULL,
+  `cv_custompropertyid` bigint(20) unsigned NOT NULL,
+  UNIQUE KEY `cv_id` (`cv_id`),
+  KEY `cv_link` (`cv_link`,`cv_custompropertyid`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
--- Dumping data for table `service`
+-- Dumping data for table `customvalue`
 --
 
-INSERT INTO `service` (`s_id`, `s_title`, `s_length`, `s_price`, `s_description`, `s_businessid`) VALUES
-(1, 'Massage', 60, NULL, NULL, 1),
-(2, 'Haircut', 60, '55.99', 'Big Hair', 1),
-(3, 'Massage', 60, '55.99', 'Thai Massage', 2),
-(7, 'Shampoo', 30, NULL, '', 2);
+INSERT INTO `customvalue` (`cv_id`, `cv_value`, `cv_link`, `cv_custompropertyid`) VALUES
+(1, 'Document 1', 'abc123', 1),
+(2, '21/02/2014', 'abc123', 2),
+(3, 'Thomas Wood', 'abc123', 3);
 
 -- --------------------------------------------------------
 
@@ -4574,32 +4277,6 @@ CREATE TABLE IF NOT EXISTS `session` (
   `se_data` text,
   PRIMARY KEY (`se_session`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `staffservice`
---
-
-CREATE TABLE IF NOT EXISTS `staffservice` (
-  `ss_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-  `ss_userbusinessid` bigint(20) unsigned NOT NULL,
-  `ss_serviceid` bigint(20) unsigned NOT NULL,
-  PRIMARY KEY (`ss_id`),
-  UNIQUE KEY `sc_id` (`ss_id`),
-  KEY `sc_userserviceid` (`ss_userbusinessid`),
-  KEY `sc_choiceid` (`ss_serviceid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COMMENT='What a staff can do for a particular service' AUTO_INCREMENT=5 ;
-
---
--- Dumping data for table `staffservice`
---
-
-INSERT INTO `staffservice` (`ss_id`, `ss_userbusinessid`, `ss_serviceid`) VALUES
-(1, 3, 3),
-(2, 3, 7),
-(3, 2, 3),
-(4, 2, 7);
 
 -- --------------------------------------------------------
 
