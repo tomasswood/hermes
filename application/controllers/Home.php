@@ -28,4 +28,10 @@ class Home extends MY_Controller {
 			$this->entity_model->save_properties($properties);
 		};
 	}
+
+	public function get_values()
+	{
+		$this->load->model('entity_model');
+		return $this->entity_model->load_values();
+	}
 }

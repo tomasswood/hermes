@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 25, 2014 at 06:34 AM
+-- Generation Time: Mar 03, 2014 at 05:44 AM
 -- Server version: 5.6.11
 -- PHP Version: 5.5.3
 
@@ -4220,6 +4220,27 @@ INSERT INTO `calendar_table` (`dt`, `y`, `q`, `m`, `d`, `dw`, `monthName`, `dayN
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `customlink`
+--
+
+CREATE TABLE IF NOT EXISTS `customlink` (
+  `cl_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `cl_timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`cl_id`),
+  UNIQUE KEY `cl_id` (`cl_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `customlink`
+--
+
+INSERT INTO `customlink` (`cl_id`, `cl_timestamp`) VALUES
+(1, '2014-03-03 02:57:14'),
+(2, '2014-03-03 02:57:18');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `customproperty`
 --
 
@@ -4230,16 +4251,17 @@ CREATE TABLE IF NOT EXISTS `customproperty` (
   `cp_order` tinyint(3) NOT NULL,
   UNIQUE KEY `cp_id` (`cp_id`),
   KEY `cp_order` (`cp_order`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
 
 --
 -- Dumping data for table `customproperty`
 --
 
 INSERT INTO `customproperty` (`cp_id`, `cp_name`, `cp_header`, `cp_order`) VALUES
-(1, 'name', b'1', 1),
-(2, 'date', b'1', 2),
-(3, 'by', b'1', 3);
+(1, 'Name', b'1', 1),
+(2, 'Date', b'1', 4),
+(3, 'By', b'1', 2),
+(7, 'Custom1', b'1', 3);
 
 -- --------------------------------------------------------
 
@@ -4250,20 +4272,24 @@ INSERT INTO `customproperty` (`cp_id`, `cp_name`, `cp_header`, `cp_order`) VALUE
 CREATE TABLE IF NOT EXISTS `customvalue` (
   `cv_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `cv_value` varchar(255) NOT NULL,
-  `cv_link` varchar(255) NOT NULL,
+  `cv_linkid` bigint(20) NOT NULL,
   `cv_custompropertyid` bigint(20) unsigned NOT NULL,
   UNIQUE KEY `cv_id` (`cv_id`),
-  KEY `cv_link` (`cv_link`,`cv_custompropertyid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+  KEY `cv_link` (`cv_linkid`,`cv_custompropertyid`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
 
 --
 -- Dumping data for table `customvalue`
 --
 
-INSERT INTO `customvalue` (`cv_id`, `cv_value`, `cv_link`, `cv_custompropertyid`) VALUES
-(1, 'Document 1', 'abc123', 1),
-(2, '21/02/2014', 'abc123', 2),
-(3, 'Thomas Wood', 'abc123', 3);
+INSERT INTO `customvalue` (`cv_id`, `cv_value`, `cv_linkid`, `cv_custompropertyid`) VALUES
+(1, 'Document 1', 1, 1),
+(2, '21/02/2014', 1, 2),
+(3, 'Thomas Wood', 1, 3),
+(4, 'Document 2', 2, 1),
+(5, 'Allan Smith', 2, 3),
+(6, '03/03/2013', 2, 2),
+(7, 'Custom Value', 2, 7);
 
 -- --------------------------------------------------------
 

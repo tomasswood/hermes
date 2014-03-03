@@ -10,7 +10,6 @@
 
 		function load_properties()
 		{
-			//$bsid = Businesses::getUserBusinessID();
 			$content = null;
 			$status = 0;
 			$error = "";
@@ -42,7 +41,7 @@
 				foreach($data['properties'] as $rowValues) {
 					array_push($bind, $rowValues['id'], $rowValues['name'], $rowValues['header'], $rowValues['order']);
 				}
-				// Build Query to Insert User
+				// Build Query to Insert/Update Property
 				$query = "
 				   INSERT INTO `customproperty` (cp_id, cp_name, cp_header, cp_order) VALUES
 				";
@@ -78,6 +77,58 @@
 				echo true;
 			else
 				echo false;
+		}
+
+		function load_values()
+		{
+			$content = null;
+			$status = 0;
+			$error = "";
+
+			$query = "
+				SELECT cv_id, COALESCE(cv_value, '') AS cv_value, cp_id, cl_id
+				FROM customproperty
+				LEFT JOIN customvalue ON cv_custompropertyid = cp_id
+				INNER JOIN customlink ON cv_linkid = cl_id
+				GROUP BY cv_linkid, cp_id, cv_value, cv_id
+				ORDER BY cl_timestamp, cl_id, cp_order
+			";
+			$result = $this->db->query($query);
+			if($result->num_rows() > 0)
+			{
+				$status = 1;
+				$values_list = $result->result_array();
+			}
+
+			$content = array(); // Data to return
+			$entity = array(); // The current entity row we are building
+			$link = 0; // What unique link we are on
+			// Loop through all of the values we have
+			foreach($values_list as $v)
+			{
+				// Check if we are on a new set of values
+				if($link != $v['cl_id'] && $link != 0)
+				{
+					array_push($content, $entity); // Push our entity values onto our data to return
+					$entity = array(); // Empty our entity values array
+				}
+
+				// Push the Property ID and the Value onto our entity
+				array_push($entity, array(
+					'cp_id' => $v['cp_id'],
+					'value' => $v['cv_value']
+				));
+
+				$link = $v['cl_id']; // Set the link we were just on
+			}
+			// Check if our Final entity isn't null
+			if(!empty($entity))
+				array_push($content, $entity);
+
+			$data['content'] = $content;
+			$data['status'] = $status;
+			$data['error'] = $error;
+			echo json_encode($data);
 		}
 	}
 /*
