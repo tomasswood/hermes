@@ -67,21 +67,6 @@ th {
 
 	  td {
 
-		&.display-name {
-		  width: 65%;
-
-		  &:hover {
-			text-decoration: underline;
-			cursor: pointer;
-		  }
-		}
-		&.display-date {
-		  width: 10%;
-		  color: $gray;
-		}
-		&.display-by {
-		  width: 20%;
-		}
 		&.display-action {
 		  width: 5;
 		  text-align: center;

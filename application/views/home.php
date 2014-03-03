@@ -20,10 +20,21 @@
 </div>
 
 <script>
+	var saved = false;
+
 	$('#properties').click(function() {
 		var properties = createPropertiesMenu();
 		properties += createPropertiesList();
-		showModal('Properties', properties);
+
+		var initDrag = $('#modal-blank').on('shown.bs.modal', function (e) {
+			$("#properties-list").sortable();
+		});
+		var reloadPageModal = $('#modal-blank').on('hidden.bs.modal', function (e) {
+			if(saved) // Only reload if we actually made changes and saved them
+				window.location.reload(true);
+		});
+
+		showModal('Properties', properties, initDrag, reloadPageModal);
 	});
 
 	function createPropertiesMenu()
@@ -62,8 +73,9 @@
 
 	function addProperty()
 	{
-		$('#properties-list').append('<li data-order="' + data['cp_order'] + '" data-header="' + data['cp_header'] + '" data-id="' + data['cp_id']
-			+ '" class="form-control width-200">' + '<input type="checkbox" name="property-checkbox"> <label class="property-label">'
+		var count = resetProperty() + 1;
+		$('#properties-list').append('<li data-order="' + count + '" data-header="' + false + '" data-id=""'
+			+ ' class="form-control width-200">' + '<input type="checkbox" name="property-checkbox"> <label class="property-label">'
 			+ "New Property" + '</label>' + '<input type="text" class="property-input hide" value="' + "New Property" + '" /></li>');
 	}
 	function removeProperty()
@@ -84,16 +96,15 @@
 			if($(this).attr("data-hide"))
 			{
 				var id = $(this).data("id");
-				if(id != null)
+				if(parseInt(id)) // Make sure we aren't adding invalid ID's
 					del_properties.push(id);
 			}
 			else
 			{
 				count++;
 				$(this).attr("data-order", count);
-				var stage = {"id":$(this).data("id"), "name":$(this).children('.property-input').val(), "order": $(this).attr("data-order")};
-				properties.push(properties);
-
+				var stage = {"id":$(this).data("id"), "name":$(this).children('.property-input').val(), "header": $(this).attr("data-header"), "order": $(this).attr("data-order")};
+				properties.push(stage);
 			}
 		});
 		if(array)
@@ -109,26 +120,37 @@
 	{
 		var properties_data = resetProperty(true);
 		console.log(properties_data);
+
+		$.ajax({
+			url: "home/save-properties",
+			type: 'POST',
+			data: {"properties_data": properties_data},
+			cache: false,
+			success: function() {
+				saved = true;
+				$('#save-property').prop('disabled', false);
+			}
+		});
 	}
 
-	$('#display').on('click', '.property-label', function() {
+	$('#main').on('click', '.property-label', function() {
 		$(this).hide();
 		$(this).next().toggleClass('hide');
 	});
-	$('#display').on('blur', '.property-input', function() {
+	$('#main').on('blur', '.property-input', function() {
 		$(this).prev().text($(this).val());
 		$(this).toggleClass('hide');
 		$(this).prev().show();
 	});
-	$('#display').on('click', '#save-property', function() {
+	$('#main').on('click', '#save-property', function() {
 		console.log("save");
 		$(this).prop('disabled', true);
 		ajaxSaveProperty();
 	});
-	$('#display').on('click', '#add-property', function() {
+	$('#main').on('click', '#add-property', function() {
 		addProperty();
 	});
-	$('#display').on('click', '#remove-property', function() {
+	$('#main').on('click', '#remove-property', function() {
 		removeProperty();
 	});
 </script>

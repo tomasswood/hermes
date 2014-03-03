@@ -91,7 +91,7 @@ $(document).ready(function() {
 
 function createShit()
 {
-	var temp_array = ['Document', '21/02/2014', 'Thomas Wood'];
+	var temp_array = ['Document', '21/02/2014', 'Thomas Wood', ""];
 
 	for(var i = 1; i <= 3; i++)
 	{
@@ -147,9 +147,11 @@ function renderEntitiesTable()
 	for(var i = 0; i < DATA.getLength(); i++)
 	{
 		table += '<tr>';
-		table += '<td class="display-name">' + DATA.getSubInfo(i,'name') + '</td>';
-		table += '<td class="display-date">' + DATA.getSubInfo(i,'date') + '</td>';
-		table += '<td class="display-by">' + DATA.getSubInfo(i,'by') + '</td>';
+		for(var j = 0; j < ENTITY.getLength(); j++)
+		{
+			if(ENTITY.getSubInfo(j,'header')) // Check if the property is set to be a header
+				table += '<td>' + DATA.getSubInfo(i, ENTITY.getSubInfo(j,'name')) + '</td>';
+		}
 		table += getTemplateAction();
 		table += '</tr>';
 	}

@@ -18,7 +18,8 @@
 </div>
 <!-- /.modal -->
 <script>
-	function showModal(title, data)
+	// Modal title, Modal data, Optional function (eg onModalClose)
+	function showModal(title, data, func1, func2)
 	{
 		$('#modal-blank').modal();
 		$('#modal-blank-title').html(title);

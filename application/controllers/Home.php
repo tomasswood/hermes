@@ -18,4 +18,14 @@ class Home extends MY_Controller {
 		$this->load->model('entity_model');
 		return $this->entity_model->load_properties();
 	}
+
+	public function save_properties()
+	{
+		if($this->input->post())
+		{
+			$properties = $this->input->post('properties_data', true);
+			$this->load->model('entity_model');
+			$this->entity_model->save_properties($properties);
+		};
+	}
 }
