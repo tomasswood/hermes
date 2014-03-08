@@ -8,17 +8,29 @@
 			$this->load->database();
 		}
 
-		function load_properties()
+		function load_customtypes()
+		{
+			$query = "
+			   SELECT * FROM `customtype`
+			   ORDER BY ct_id
+			";
+			$result = $this->db->query($query);
+			return $result->result_array();
+		}
+
+		function load_properties($typeid = 0)
 		{
 			$content = null;
 			$status = 0;
 			$error = "";
 
 			$query = "
-			   SELECT * FROM `customproperty`
-			   ORDER BY cp_order
+			    SELECT * FROM `customproperty`
+			    WHERE cp_customtypeid = ? OR
+			    	cp_customtypeid IS NULL
+			    ORDER BY cp_order
 			";
-			$result = $this->db->query($query);
+			$result = $this->db->query($query, array($typeid));
 			if($result->num_rows() > 0)
 			{
 				$status = 1;
@@ -39,15 +51,15 @@
 
 				$bind = array();
 				foreach($data['properties'] as $rowValues) {
-					array_push($bind, $rowValues['id'], $rowValues['name'], $rowValues['header'], $rowValues['order']);
+					array_push($bind, $rowValues['id'], $rowValues['name'], $rowValues['header'], $rowValues['order'], $rowValues['type']);
 				}
 				// Build Query to Insert/Update Property
 				$query = "
-				   INSERT INTO `customproperty` (cp_id, cp_name, cp_header, cp_order) VALUES
+				   INSERT INTO `customproperty` (cp_id, cp_name, cp_header, cp_order, cp_customtypeid) VALUES
 				";
 				for($i = 0; $i < count($data['properties']); $i++)
 				{
-					$query .= '(?,?,?,?),';
+					$query .= '(?,?,?,?,?),';
 				}
 				$query = rtrim($query, ",");
 				$query .= " ON DUPLICATE KEY UPDATE cp_name = VALUES(cp_name), cp_header = VALUES(cp_header), cp_order = VALUES(cp_order) ";
@@ -79,7 +91,7 @@
 				echo false;
 		}
 
-		function load_values()
+		function load_values($typeid = 0)
 		{
 			$content = null;
 			$status = 0;
@@ -90,10 +102,12 @@
 				FROM customproperty
 				LEFT JOIN customvalue ON cv_custompropertyid = cp_id
 				INNER JOIN customlink ON cv_linkid = cl_id
+				INNER JOIN customtype ON cv_customtypeid = ct_id
+					AND ct_id = ?
 				GROUP BY cv_linkid, cp_id, cv_value, cv_id
 				ORDER BY cl_timestamp, cl_id, cp_order
 			";
-			$result = $this->db->query($query);
+			$result = $this->db->query($query, array($typeid));
 			if($result->num_rows() > 0)
 			{
 				$status = 1;
@@ -101,29 +115,33 @@
 			}
 
 			$content = array(); // Data to return
-			$entity = array(); // The current entity row we are building
-			$link = 0; // What unique link we are on
-			// Loop through all of the values we have
-			foreach($values_list as $v)
+			if($status === 1)
 			{
-				// Check if we are on a new set of values
-				if($link != $v['cl_id'] && $link != 0)
+
+				$entity = array(); // The current entity row we are building
+				$link = 0; // What unique link we are on
+				// Loop through all of the values we have
+				foreach($values_list as $v)
 				{
-					array_push($content, $entity); // Push our entity values onto our data to return
-					$entity = array(); // Empty our entity values array
+					// Check if we are on a new set of values
+					if($link != $v['cl_id'] && $link != 0)
+					{
+						array_push($content, $entity); // Push our entity values onto our data to return
+						$entity = array(); // Empty our entity values array
+					}
+
+					// Push the Property ID and the Value onto our entity
+					array_push($entity, array(
+						'cp_id' => $v['cp_id'],
+						'value' => $v['cv_value']
+					));
+
+					$link = $v['cl_id']; // Set the link we were just on
 				}
-
-				// Push the Property ID and the Value onto our entity
-				array_push($entity, array(
-					'cp_id' => $v['cp_id'],
-					'value' => $v['cv_value']
-				));
-
-				$link = $v['cl_id']; // Set the link we were just on
+				// Check if our Final entity isn't null
+				if(!empty($entity))
+					array_push($content, $entity);
 			}
-			// Check if our Final entity isn't null
-			if(!empty($entity))
-				array_push($content, $entity);
 
 			$data['content'] = $content;
 			$data['status'] = $status;
@@ -131,9 +149,3 @@
 			echo json_encode($data);
 		}
 	}
-/*
- *  SELECT cv_id, cv_value, cv_custompropertyid FROM customvalue
-	LEFT JOIN customproperty ON cv_custompropertyid = cv_id
-	GROUP BY cv_link, cv_custompropertyid, cv_value, cv_id
-	ORDER BY cp_order
- */

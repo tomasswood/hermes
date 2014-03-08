@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 03, 2014 at 05:44 AM
+-- Generation Time: Mar 08, 2014 at 11:39 PM
 -- Server version: 5.6.11
 -- PHP Version: 5.5.3
 
@@ -4249,19 +4249,42 @@ CREATE TABLE IF NOT EXISTS `customproperty` (
   `cp_name` varchar(50) NOT NULL,
   `cp_header` bit(1) NOT NULL DEFAULT b'0',
   `cp_order` tinyint(3) NOT NULL,
+  `cp_customtypeid` bigint(20) unsigned DEFAULT NULL,
   UNIQUE KEY `cp_id` (`cp_id`),
   KEY `cp_order` (`cp_order`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=18 ;
 
 --
 -- Dumping data for table `customproperty`
 --
 
-INSERT INTO `customproperty` (`cp_id`, `cp_name`, `cp_header`, `cp_order`) VALUES
-(1, 'Name', b'1', 1),
-(2, 'Date', b'1', 4),
-(3, 'By', b'1', 2),
-(7, 'Custom1', b'1', 3);
+INSERT INTO `customproperty` (`cp_id`, `cp_name`, `cp_header`, `cp_order`, `cp_customtypeid`) VALUES
+(1, 'Name', b'1', 1, NULL),
+(2, 'Date', b'1', 3, NULL),
+(3, 'By', b'1', 2, NULL),
+(7, 'Custom1', b'1', 4, 1),
+(13, 'Custom 2', b'1', 5, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `customtype`
+--
+
+CREATE TABLE IF NOT EXISTS `customtype` (
+  `ct_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `ct_name` varchar(50) NOT NULL,
+  `ct_type` enum('Document','Person') NOT NULL DEFAULT 'Document',
+  UNIQUE KEY `ct_id` (`ct_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `customtype`
+--
+
+INSERT INTO `customtype` (`ct_id`, `ct_name`, `ct_type`) VALUES
+(1, 'Documents', 'Document'),
+(2, 'Customers', 'Person');
 
 -- --------------------------------------------------------
 
@@ -4274,6 +4297,7 @@ CREATE TABLE IF NOT EXISTS `customvalue` (
   `cv_value` varchar(255) NOT NULL,
   `cv_linkid` bigint(20) NOT NULL,
   `cv_custompropertyid` bigint(20) unsigned NOT NULL,
+  `cv_customtypeid` bigint(20) unsigned NOT NULL,
   UNIQUE KEY `cv_id` (`cv_id`),
   KEY `cv_link` (`cv_linkid`,`cv_custompropertyid`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
@@ -4282,14 +4306,14 @@ CREATE TABLE IF NOT EXISTS `customvalue` (
 -- Dumping data for table `customvalue`
 --
 
-INSERT INTO `customvalue` (`cv_id`, `cv_value`, `cv_linkid`, `cv_custompropertyid`) VALUES
-(1, 'Document 1', 1, 1),
-(2, '21/02/2014', 1, 2),
-(3, 'Thomas Wood', 1, 3),
-(4, 'Document 2', 2, 1),
-(5, 'Allan Smith', 2, 3),
-(6, '03/03/2013', 2, 2),
-(7, 'Custom Value', 2, 7);
+INSERT INTO `customvalue` (`cv_id`, `cv_value`, `cv_linkid`, `cv_custompropertyid`, `cv_customtypeid`) VALUES
+(1, 'Document 1', 1, 1, 1),
+(2, '21/02/2014', 1, 2, 1),
+(3, 'Thomas Wood', 1, 3, 1),
+(4, 'Document 2', 2, 1, 1),
+(5, 'Allan Smith', 2, 3, 1),
+(6, '03/03/2013', 2, 2, 1),
+(7, 'Custom Value', 2, 7, 1);
 
 -- --------------------------------------------------------
 

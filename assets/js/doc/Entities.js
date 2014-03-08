@@ -14,13 +14,17 @@
  */
 
 // Our Data object which Contains all of our Entities
-var DATA = {
+DATA = {
 	entity: [],
+	typeid: 0,
 	getLength: function() {
 		return this.entity.length
 	},
 	addEntity: function(entity) {
 		this.entity.push(entity);
+	},
+	clear: function() {
+		this.entity.length = 0;
 	},
 	getSubInfo: function(level, index) {
 		// Return our value and default it to empty if there is nothing
@@ -32,7 +36,7 @@ var DATA = {
 }
 
 // Our Entities object which contains properties
-var ENTITY = {
+ENTITY = {
 	property: [],
 	getLength: function() {
 		return this.property.length;
@@ -46,20 +50,30 @@ var ENTITY = {
 	addProperty: function(property_id, property_name, header, property_order) {
 		this.property.push({cp_id:property_id, cp_name: property_name, cp_header: header, cp_order:property_order});
 	},
+	clear: function() {
+		this.property.length = 0;
+	},
 	// Takes either the names property or the index
 	removeProperty: function(p) {
-		var i = p;
+		var a = p;
 		if(isNaN(p))
 		{
-			for(var j = 0; j < this.getLength(); j++)
+			for(var i = 0; i < this.getLength(); i++)
 			{
-				if(this.getSubInfo(j, 'name') === p)
-					i = j;
+				if(this.getSubInfo(i, 'name') === p)
+					a = i;
 			}
 		}
-		if(i >= 0)
-			this.property.splice(i, 1);
+		if(a >= 0)
+			this.property.splice(a, 1);
 	}
+}
+
+function clearObjects()
+{
+	DATA.clear();
+	ENTITY.clear();
+	$('#display-table').empty();
 }
 
 function ajaxFetchProperties() {
@@ -67,19 +81,21 @@ function ajaxFetchProperties() {
 	// Send our AJAX request with the query we want to use in the DO file
 	$.ajax({
 		type: "POST",
-		url: "home/get-properties",
+		url: "home/get-properties/" + DATA.typeid,
 		cache: false,
 		success: function(data) {
 			data = $.parseJSON(data); //The JSON array returned from our AJAX request
 			// Check if we have a valid return
 			if(data.status == 1) {
+				clearObjects();
 				var p = data.content;
 				// Insert each of our Properties into our ENTITY object and format them to the right type
 				for(var i = 0; i < p.length; i++)
 				{
 					ENTITY.addProperty(parseInt(p[i]['cp_id']), p[i]['cp_name'], Boolean(p[i]['cp_header']), parseInt(p[i]['cp_order']));
 				}
-				ajaxFetchValues();
+				if(DATA.typeid > 0)
+					ajaxFetchValues();
 			}
 		}
 
@@ -91,7 +107,7 @@ function ajaxFetchValues() {
 	// Send our AJAX request with the query we want to use in the DO file
 	$.ajax({
 		type: "POST",
-		url: "home/get-values",
+		url: "home/get-values/" + DATA.typeid,
 		cache: false,
 		success: function(data) {
 			data = $.parseJSON(data); //The JSON array returned from our AJAX request

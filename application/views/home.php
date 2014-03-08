@@ -12,6 +12,11 @@
 					<table id="display-table">
 
 					</table>
+					<ul id="display-list">
+						<?php foreach($types as $t)
+							echo '<li class="display-type" data-id="' . $t['ct_id'] . '" data-type="' . $t['ct_type'] . '">' . $t['ct_name'] . '</li>';
+						?>
+					</ul>
 				</div>
 			</div>
 		</div>
@@ -103,7 +108,8 @@
 			{
 				count++;
 				$(this).attr("data-order", count);
-				var stage = {"id":$(this).data("id"), "name":$(this).children('.property-input').val(), "header": $(this).attr("data-header"), "order": $(this).attr("data-order")};
+				var stage = {"id":$(this).data("id"), "name":$(this).children('.property-input').val(), "header": $(this).attr("data-header"),
+					"order": $(this).attr("data-order"), "type": DATA.typeid};
 				properties.push(stage);
 			}
 		});
@@ -133,6 +139,10 @@
 		});
 	}
 
+	$('#display-list').on('click', '.display-type', function() {
+		DATA.typeid = $(this).data('id');
+		ajaxFetchProperties();
+	});
 	$('#main').on('click', '.property-label', function() {
 		$(this).hide();
 		$(this).next().toggleClass('hide');

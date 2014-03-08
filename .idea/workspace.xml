@@ -5,6 +5,8 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/js/doc/Entities.js" afterPath="$PROJECT_DIR$/assets/js/doc/Entities.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/models/Entity_model.php" afterPath="$PROJECT_DIR$/application/models/Entity_model.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/controllers/Home.php" afterPath="$PROJECT_DIR$/application/controllers/Home.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/home.php" afterPath="$PROJECT_DIR$/application/views/home.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="hermes.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -27,10 +29,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Entities.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Entities.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/assets/js/doc/Entities.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="166" column="24" selection-start="4079" selection-end="4079" vertical-scroll-proportion="1.65" vertical-offset="1054" max-vertical-offset="3196">
+            <state line="109" column="45" selection-start="2449" selection-end="2449" vertical-scroll-proportion="0.0" vertical-offset="901" max-vertical-offset="3468">
               <folding />
             </state>
           </provider>
@@ -57,22 +59,25 @@
       <file leaf-file-name="Entity_model.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/models/Entity_model.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="43" column="56" selection-start="1024" selection-end="1024" vertical-scroll-proportion="-28.115385" vertical-offset="0" max-vertical-offset="2448">
+            <state line="53" column="135" selection-start="1273" selection-end="1273" vertical-scroll-proportion="-31.76923" vertical-offset="75" max-vertical-offset="2652">
               <folding>
-                <marker date="1393821855733" expanded="true" signature="305:359" placeholder="SELECT * FRO..." />
-                <marker date="1393821855733" expanded="true" signature="1047:1120" placeholder="INSERT INTO ..." />
-                <marker date="1393821855733" expanded="true" signature="1574:1623" placeholder="DELETE FROM ..." />
-                <marker date="1393821855733" expanded="true" signature="1973:2253" placeholder="SELECT cv_id..customproperty..." />
+                <marker date="1394318202492" expanded="true" signature="253:300" placeholder="SELECT * FRO..." />
+                <marker date="1394318202492" expanded="true" signature="504:627" placeholder="SELECT * FRO..." />
+                <marker date="1394318202492" expanded="true" signature="1351:1441" placeholder="INSERT INTO ..." />
+                <marker date="1394318202492" expanded="true" signature="1897:1946" placeholder="DELETE FROM ..." />
+                <marker date="1394318202492" expanded="true" signature="2307:2659" placeholder="SELECT cv_id..customproperty..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="home.php" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="home.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/application/views/home.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="91" column="28" selection-start="2942" selection-end="2942" vertical-scroll-proportion="-49.346153" vertical-offset="264" max-vertical-offset="2737">
-              <folding />
+            <state line="116" column="9" selection-start="3738" selection-end="3738" vertical-scroll-proportion="0.7429719" vertical-offset="1232" max-vertical-offset="2907">
+              <folding>
+                <marker date="1394318259929" expanded="true" signature="655:873" placeholder="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -89,7 +94,7 @@
       <file leaf-file-name="Home.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/controllers/Home.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="34" column="50" selection-start="955" selection-end="955" vertical-scroll-proportion="-22.23077" vertical-offset="0" max-vertical-offset="714">
+            <state line="38" column="55" selection-start="1099" selection-end="1099" vertical-scroll-proportion="-24.846153" vertical-offset="0" max-vertical-offset="782">
               <folding />
             </state>
           </provider>
@@ -98,7 +103,7 @@
       <file leaf-file-name="_tables.scss" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/assets/sass/_tables.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="68" column="0" selection-start="974" selection-end="974" vertical-scroll-proportion="-16.346153" vertical-offset="731" max-vertical-offset="5695">
+            <state line="68" column="0" selection-start="974" selection-end="974" vertical-scroll-proportion="0.0" vertical-offset="731" max-vertical-offset="5695">
               <folding />
             </state>
           </provider>
@@ -145,10 +150,10 @@
         <option value="$PROJECT_DIR$/../pegasus/application/views/business/modules/edit/edit-stages.php" />
         <option value="$PROJECT_DIR$/assets/sass/_tables.scss" />
         <option value="$PROJECT_DIR$/application/views/modal.php" />
-        <option value="$PROJECT_DIR$/application/views/home.php" />
         <option value="$PROJECT_DIR$/application/controllers/Home.php" />
         <option value="$PROJECT_DIR$/assets/js/doc/Entities.js" />
         <option value="$PROJECT_DIR$/application/models/Entity_model.php" />
+        <option value="$PROJECT_DIR$/application/views/home.php" />
       </list>
     </option>
   </component>
@@ -420,20 +425,20 @@
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3272901" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3290735" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17625134" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32954547" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17784877" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32954547" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32954547" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32792208" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -644,45 +649,44 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/../pegasus/application/views/business/modules/edit/edit-stages.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="32" selection-start="475" selection-end="475" vertical-scroll-proportion="0.20523138" vertical-offset="0" max-vertical-offset="994">
-          <folding />
-        </state>
+        <state line="12" column="32" selection-start="475" selection-end="475" vertical-scroll-proportion="0.20523138" vertical-offset="0" max-vertical-offset="994" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../pegasus/application/models/Edit_business_model.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="231" column="50" selection-start="5717" selection-end="5717" vertical-scroll-proportion="0.52112675" vertical-offset="3409" max-vertical-offset="4471">
-          <folding>
-            <marker date="1392197490043" expanded="true" signature="-1:-1" placeholder="UPDATE busin..." />
-            <marker date="1392197490043" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..service..." />
-            <marker date="1392197490043" expanded="true" signature="-1:-1" placeholder="INSERT INTO ..." />
-            <marker date="1392197490043" expanded="true" signature="-1:-1" placeholder="DELETE FROM ..." />
-            <marker date="1392197490043" expanded="true" signature="-1:-1" placeholder="INSERT INTO ..." />
-            <marker date="1392197490043" expanded="true" signature="-1:-1" placeholder="DELETE FROM ..." />
-            <marker date="1392197490043" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..." />
-            <marker date="1392197490043" expanded="true" signature="-1:-1" placeholder="INSERT INTO ..." />
-            <marker date="1392197490043" expanded="true" signature="-1:-1" placeholder="DELETE FROM ..." />
-          </folding>
-        </state>
+        <state line="231" column="50" selection-start="5717" selection-end="5717" vertical-scroll-proportion="0.52112675" vertical-offset="3409" max-vertical-offset="4471" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../pegasus/application/controllers/Business.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="751" column="9" selection-start="28904" selection-end="29129" vertical-scroll-proportion="0.27364185" vertical-offset="12495" max-vertical-offset="14416">
-          <folding />
-        </state>
+        <state line="751" column="9" selection-start="28904" selection-end="29129" vertical-scroll-proportion="0.27364185" vertical-offset="12495" max-vertical-offset="14416" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../pegasus/assets/js/pages/business/edit/EditBusiness.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="293" column="7" selection-start="7801" selection-end="8434" vertical-scroll-proportion="0.46666667" vertical-offset="4505" max-vertical-offset="6086">
-          <folding />
-        </state>
+        <state line="293" column="7" selection-start="7801" selection-end="8434" vertical-scroll-proportion="0.46666667" vertical-offset="4505" max-vertical-offset="6086" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/assets/sass/_tables.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="68" column="0" selection-start="974" selection-end="974" vertical-scroll-proportion="-16.346153" vertical-offset="731" max-vertical-offset="5695">
+        <state line="68" column="0" selection-start="974" selection-end="974" vertical-scroll-proportion="0.0" vertical-offset="731" max-vertical-offset="5695">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../pegasus/application/models/Bookings_model.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="13" selection-start="480" selection-end="480" vertical-scroll-proportion="-3.7112677" vertical-offset="3978" max-vertical-offset="7429" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../pegasus/application/models/Calendar_model.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="33" column="28" selection-start="1206" selection-end="1226" vertical-scroll-proportion="0.25653923" vertical-offset="306" max-vertical-offset="20026" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/js/doc/Page.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="190" column="49" selection-start="5324" selection-end="5324" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4964">
           <folding />
         </state>
       </provider>
@@ -694,16 +698,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/controllers/Home.php">
+    <entry file="file://$PROJECT_DIR$/assets/js/doc/Entities.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="50" selection-start="955" selection-end="955" vertical-scroll-proportion="-22.23077" vertical-offset="0" max-vertical-offset="714">
+        <state line="109" column="45" selection-start="2449" selection-end="2449" vertical-scroll-proportion="0.0" vertical-offset="901" max-vertical-offset="3468">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assets/js/doc/Page.js">
+    <entry file="file://$PROJECT_DIR$/application/controllers/Home.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="190" column="49" selection-start="5324" selection-end="5324" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4964">
+        <state line="38" column="55" selection-start="1099" selection-end="1099" vertical-scroll-proportion="-24.846153" vertical-offset="0" max-vertical-offset="782">
           <folding />
         </state>
       </provider>
@@ -715,61 +719,25 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/home.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="91" column="28" selection-start="2942" selection-end="2942" vertical-scroll-proportion="-49.346153" vertical-offset="264" max-vertical-offset="2737">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../pegasus/application/models/Bookings_model.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="13" selection-start="480" selection-end="480" vertical-scroll-proportion="-3.7112677" vertical-offset="3978" max-vertical-offset="7429">
-          <folding>
-            <marker date="1391421589015" expanded="true" signature="-1:-1" placeholder="UPDATE booki..." />
-            <marker date="1391421589015" expanded="true" signature="-1:-1" placeholder="SELECT b_ref..." />
-            <marker date="1391421589015" expanded="false" signature="-1:-1" placeholder="..." />
-            <marker date="1391421589015" expanded="false" signature="-1:-1" placeholder="..." />
-            <marker date="1391421589015" expanded="false" signature="-1:-1" placeholder="..." />
-            <marker date="1391421589015" expanded="false" signature="-1:-1" placeholder="..." />
-            <marker date="1391421589015" expanded="false" signature="-1:-1" placeholder="..." />
-            <marker date="1391421589015" expanded="false" signature="-1:-1" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../pegasus/application/models/Calendar_model.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="28" selection-start="1206" selection-end="1226" vertical-scroll-proportion="0.25653923" vertical-offset="306" max-vertical-offset="20026">
-          <folding>
-            <marker date="1392798718448" expanded="true" signature="-1:-1" placeholder="SELECT bu_id..." />
-            <marker date="1392798718448" expanded="true" signature="-1:-1" placeholder="INSERT INTO ..." />
-            <marker date="1392798718448" expanded="true" signature="-1:-1" placeholder="INSERT INTO ..." />
-            <marker date="1392798718448" expanded="true" signature="-1:-1" placeholder="INSERT INTO ..." />
-            <marker date="1392798718448" expanded="true" signature="-1:-1" placeholder="INSERT INTO ..." />
-            <marker date="1392798718448" expanded="true" signature="-1:-1" placeholder="SELECT b_ref..." />
-            <marker date="1392798718448" expanded="true" signature="-1:-1" placeholder="SELECT COALE..booking..." />
-            <marker date="1392798718448" expanded="true" signature="-1:-1" placeholder="INSERT INTO ..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/models/Entity_model.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="43" column="56" selection-start="1024" selection-end="1024" vertical-scroll-proportion="-28.115385" vertical-offset="0" max-vertical-offset="2448">
+        <state line="53" column="135" selection-start="1273" selection-end="1273" vertical-scroll-proportion="-31.76923" vertical-offset="75" max-vertical-offset="2652">
           <folding>
-            <marker date="1393821855733" expanded="true" signature="305:359" placeholder="SELECT * FRO..." />
-            <marker date="1393821855733" expanded="true" signature="1047:1120" placeholder="INSERT INTO ..." />
-            <marker date="1393821855733" expanded="true" signature="1574:1623" placeholder="DELETE FROM ..." />
-            <marker date="1393821855733" expanded="true" signature="1973:2253" placeholder="SELECT cv_id..customproperty..." />
+            <marker date="1394318202492" expanded="true" signature="253:300" placeholder="SELECT * FRO..." />
+            <marker date="1394318202492" expanded="true" signature="504:627" placeholder="SELECT * FRO..." />
+            <marker date="1394318202492" expanded="true" signature="1351:1441" placeholder="INSERT INTO ..." />
+            <marker date="1394318202492" expanded="true" signature="1897:1946" placeholder="DELETE FROM ..." />
+            <marker date="1394318202492" expanded="true" signature="2307:2659" placeholder="SELECT cv_id..customproperty..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assets/js/doc/Entities.js">
+    <entry file="file://$PROJECT_DIR$/application/views/home.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="166" column="24" selection-start="4079" selection-end="4079" vertical-scroll-proportion="1.65" vertical-offset="1054" max-vertical-offset="3196">
-          <folding />
+        <state line="116" column="9" selection-start="3738" selection-end="3738" vertical-scroll-proportion="0.7429719" vertical-offset="1232" max-vertical-offset="2907">
+          <folding>
+            <marker date="1394318259929" expanded="true" signature="655:873" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>

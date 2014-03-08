@@ -8,15 +8,19 @@ class Home extends MY_Controller {
 		$header = array('displayType' => $display_type, 'links' => array(
 			'<script type="text/javascript" src="' . js_doc_url() . 'Entities.js"></script>'
 		));
+
+		$this->load->model('entity_model');
+		$types = $this->entity_model->load_customtypes();
+
 		$this->load->view('template/header', $header);
-		$this->load->view('home');
+		$this->load->view('home', array('types' => $types));
 		$this->load->view('template/footer', array('displayType' => $display_type));
 	}
 
-	public function get_properties()
+	public function get_properties($typeid)
 	{
 		$this->load->model('entity_model');
-		return $this->entity_model->load_properties();
+		return $this->entity_model->load_properties($typeid);
 	}
 
 	public function save_properties()
@@ -29,9 +33,9 @@ class Home extends MY_Controller {
 		};
 	}
 
-	public function get_values()
+	public function get_values($typeid)
 	{
 		$this->load->model('entity_model');
-		return $this->entity_model->load_values();
+		return $this->entity_model->load_values($typeid);
 	}
 }
